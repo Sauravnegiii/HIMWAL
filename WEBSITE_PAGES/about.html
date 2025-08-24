@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - HIMWAL</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Page-specific About styles */
+    .about-hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/about-hero.jpg") center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+    .about-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .about-section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      line-height: 1.7;
+    }
+    .about-section h2 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .team-member {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .highlight-quote {
+      background: var(--light-color);
+      padding: 3rem 2rem;
+      text-align: center;
+      font-size: 1.3rem;
+      font-style: italic;
+      margin: 4rem 0;
+      border-left: 5px solid var(--primary-color);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">HIMWAL</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <h1>About Us</h1>
+    <p>Empowering women in the Himalayas through awareness, skills, and opportunities.</p>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="about-section">
+    <h2>Who We Are</h2>
+    <p>
+      Himalayan Women Awareness & Livelihood Society (HIMWAL) is dedicated to uplifting women
+      in Himalayan regions by providing access to education, vocational training, and livelihood
+      opportunities. Our approach blends cultural preservation with modern development, ensuring
+      that women can thrive without losing their heritage.
+    </p>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="about-section">
+    <h2>Our Mission</h2>
+    <p>
+      To empower women in Himalayan communities with knowledge, skills, and resources so they can
+      lead independent and sustainable lives.
+    </p>
+
+    <h2>Our Vision</h2>
+    <p>
+      A future where women in the Himalayas are equal contributors to their communities, resilient
+      leaders, and custodians of tradition and progress.
+    </p>
+  </section>
+
+  <!-- Highlight Quote -->
+  <div class="highlight-quote">
+    “When you empower a woman, you empower an entire community.”
+  </div>
+
+  <!-- Team Section -->
+  <section class="about-section">
+    <h2>Meet Our Team</h2>
+    <div class="team">
+      <div class="team-member">
+        <img src="images/team1.jpg" alt="Team Member 1">
+        <h3>Anita Sharma</h3>
+        <p>Founder & Director</p>
+      </div>
+      <div class="team-member">
+        <img src="images/team2.jpg" alt="Team Member 2">
+        <h3>Ritu Negi</h3>
+        <p>Program Coordinator</p>
+      </div>
+      <div class="team-member">
+        <img src="images/team3.jpg" alt="Team Member 3">
+        <h3>Sapna Thakur</h3>
+        <p>Field Manager</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 HIMWAL. All rights reserved.</p>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
