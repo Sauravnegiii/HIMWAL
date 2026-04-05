@@ -1,152 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - HIMWAL</title>
+  <title>About Us — HIMWAL</title>
+  <meta name="description" content="Learn about HIMWAL — our story, mission, vision, values, and the team working to empower Himalayan women." />
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    /* Page-specific About styles */
-    .about-hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/about-hero.jpg") center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 6rem 2rem;
-    }
-    .about-hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-    .about-section {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-      line-height: 1.7;
-    }
-    .about-section h2 {
-      margin-bottom: 1rem;
-      color: var(--primary-color);
-    }
-    .team {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .team-member {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
-    .team-member img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 1rem;
-    }
-    .highlight-quote {
-      background: var(--light-color);
-      padding: 3rem 2rem;
-      text-align: center;
-      font-size: 1.3rem;
-      font-style: italic;
-      margin: 4rem 0;
-      border-left: 5px solid var(--primary-color);
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">HIMWAL</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active">About</a></li>
-        <li><a href="#programs">Programs</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+<!-- ================= Header / Nav ================= -->
+<header role="banner" aria-label="Main header">
+  <div class="container nav-inner">
+    <div class="branding">
+      <div class="logo-placeholder" id="logo-placeholder">
+        <img src="LOGO.jpeg.jpg" alt="HIMWAL Logo" />
+      </div>
+      <div class="brand-text">
+        <h1>HIMWAL</h1>
+        <p>Himalayan Women Awareness &amp; Livelihood Society</p>
+      </div>
+    </div>
+
+    <nav class="main-nav" role="navigation" aria-label="Primary navigation">
+      <a href="homepage.html">Home</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="products.html">Products</a>
+      <a href="homepage.html#programs">Programs</a>
+      <a href="homepage.html#contact" class="hide-mobile">Contact</a>
     </nav>
-  </header>
 
-  <!-- About Hero -->
-  <section class="about-hero">
-    <h1>About Us</h1>
-    <p>Empowering women in the Himalayas through awareness, skills, and opportunities.</p>
-  </section>
-
-  <!-- Who We Are -->
-  <section class="about-section">
-    <h2>Who We Are</h2>
-    <p>
-      Himalayan Women Awareness & Livelihood Society (HIMWAL) is dedicated to uplifting women
-      in Himalayan regions by providing access to education, vocational training, and livelihood
-      opportunities. Our approach blends cultural preservation with modern development, ensuring
-      that women can thrive without losing their heritage.
-    </p>
-  </section>
-
-  <!-- Mission & Vision -->
-  <section class="about-section">
-    <h2>Our Mission</h2>
-    <p>
-      To empower women in Himalayan communities with knowledge, skills, and resources so they can
-      lead independent and sustainable lives.
-    </p>
-
-    <h2>Our Vision</h2>
-    <p>
-      A future where women in the Himalayas are equal contributors to their communities, resilient
-      leaders, and custodians of tradition and progress.
-    </p>
-  </section>
-
-  <!-- Highlight Quote -->
-  <div class="highlight-quote">
-    “When you empower a woman, you empower an entire community.”
+    <div class="cta-row">
+      <button class="btn btn-volunteer" onclick="location.href='homepage.html#involve'">Volunteer</button>
+      <button class="btn btn-donate" onclick="location.href='homepage.html#contact'">Donate</button>
+    </div>
   </div>
+</header>
 
-  <!-- Team Section -->
-  <section class="about-section">
-    <h2>Meet Our Team</h2>
-    <div class="team">
-      <div class="team-member">
-        <img src="images/team1.jpg" alt="Team Member 1">
-        <h3>Anita Sharma</h3>
-        <p>Founder & Director</p>
+<!-- ================= About Hero ================= -->
+<section class="page-hero" role="region" aria-label="About hero">
+  <div class="page-hero-inner container">
+    <h2>About Us</h2>
+    <p>Empowering women in the Himalayas through awareness, skills, and opportunities.</p>
+  </div>
+</section>
+
+<!-- ================= Who We Are ================= -->
+<section class="container page-section reveal" data-delay="60" role="region" aria-labelledby="who-heading">
+  <div class="about-inner">
+    <h2 id="who-heading">Who We Are</h2>
+    <p class="muted">Himalayan Women Awareness &amp; Livelihood Society (HIMWAL) is dedicated to uplifting women
+    in Himalayan regions by providing access to education, vocational training, and livelihood
+    opportunities. Our approach blends cultural preservation with modern development, ensuring
+    that women can thrive without losing their heritage.</p>
+  </div>
+</section>
+
+<!-- ================= Mission ================= -->
+<section class="stacked reveal" data-delay="80" role="region" aria-labelledby="about-mission-heading">
+  <div class="inner">
+    <div class="block" aria-labelledby="about-mission-heading">
+      <div class="icon-wrap" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 20h20L12 4 2 20z" stroke="currentColor" stroke-width="1.1" stroke-linejoin="round" fill="none" />
+          <circle cx="17" cy="7" r="2.2" fill="currentColor" opacity="0.9" />
+        </svg>
       </div>
-      <div class="team-member">
-        <img src="images/team2.jpg" alt="Team Member 2">
-        <h3>Ritu Negi</h3>
-        <p>Program Coordinator</p>
-      </div>
-      <div class="team-member">
-        <img src="images/team3.jpg" alt="Team Member 3">
-        <h3>Sapna Thakur</h3>
-        <p>Field Manager</p>
+      <div>
+        <h3 id="about-mission-heading">Our Mission</h3>
+        <p>To empower women in Himalayan communities with knowledge, skills, and resources so they can
+        lead independent and sustainable lives, preserving their cultural identity while gaining economic freedom.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
-      <p>&copy; 2025 HIMWAL. All rights reserved.</p>
-      <div class="socials">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
-        <a href="#">Twitter</a>
+<!-- ================= Vision ================= -->
+<section class="stacked reveal" data-delay="100" role="region" aria-labelledby="about-vision-heading">
+  <div class="inner">
+    <div class="block" aria-labelledby="about-vision-heading">
+      <div class="icon-wrap" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s4-4 7-8 1-8-4-9c-1.5-.3-3 1-5 3-2-2-3.5-3.3-5-3-5 1-5 6-4 9s3 5 5 6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div>
+        <h3 id="about-vision-heading">Our Vision</h3>
+        <p>A future where women in the Himalayas are equal contributors to their communities, resilient
+        leaders, and custodians of both tradition and progress.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
+<!-- ================= Highlight Quote ================= -->
+<div class="highlight-quote reveal" data-delay="120">
+  <svg width="40" height="32" viewBox="0 0 40 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0.75rem;opacity:0.35">
+    <path d="M0 32V20C0 12.268 5.372 5.896 16.116 1L18 4.5C10.796 7.78 7.128 12.26 7 18h7V32H0Zm22 0V20C22 12.268 27.372 5.896 38.116 1L40 4.5C32.796 7.78 29.128 12.26 29 18h7V32H22Z" fill="currentColor"/>
+  </svg>
+  <p>"When you empower a woman, you empower an entire community."</p>
+</div>
+
+<!-- ================= Our Values ================= -->
+<section class="focus reveal" data-delay="140" role="region" aria-labelledby="values-heading">
+  <div class="container">
+    <h2 id="values-heading" class="center">Our Values</h2>
+    <div class="focus-grid">
+      <article class="card reveal" data-delay="160" aria-labelledby="v1">
+        <div class="body">
+          <h4 id="v1">Inclusivity</h4>
+          <p>We design programs that reach every woman, regardless of caste, religion, or literacy level.</p>
+        </div>
+      </article>
+      <article class="card reveal" data-delay="180" aria-labelledby="v2">
+        <div class="body">
+          <h4 id="v2">Sustainability</h4>
+          <p>All our initiatives prioritise long-term impact over short-term gains, respecting both people and nature.</p>
+        </div>
+      </article>
+      <article class="card reveal" data-delay="200" aria-labelledby="v3">
+        <div class="body">
+          <h4 id="v3">Community First</h4>
+          <p>Programs are co-designed with local women's groups and village elders to ensure relevance and ownership.</p>
+        </div>
+      </article>
+      <article class="card reveal" data-delay="220" aria-labelledby="v4">
+        <div class="body">
+          <h4 id="v4">Transparency</h4>
+          <p>We maintain open reporting of our finances, activities, and outcomes to all our stakeholders.</p>
+        </div>
+      </article>
+      <article class="card reveal" data-delay="240" aria-labelledby="v5">
+        <div class="body">
+          <h4 id="v5">Cultural Pride</h4>
+          <p>We celebrate Himalayan heritage and weave cultural preservation into every livelihood programme.</p>
+        </div>
+      </article>
+      <article class="card reveal" data-delay="260" aria-labelledby="v6">
+        <div class="body">
+          <h4 id="v6">Equity</h4>
+          <p>Gender equity and social justice are the foundations upon which all our advocacy work is built.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Team ================= -->
+<section class="container page-section reveal" data-delay="280" role="region" aria-labelledby="team-heading">
+  <h2 id="team-heading" class="center">Meet Our Team</h2>
+  <p class="muted center" style="max-width:700px;margin:10px auto 24px">The dedicated individuals driving HIMWAL's mission every day — in the field and beyond.</p>
+  <div class="team-grid">
+    <div class="team-card reveal" data-delay="300">
+      <div class="team-avatar" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <circle cx="40" cy="40" r="40" fill="#e7f2ed"/>
+          <circle cx="40" cy="32" r="14" fill="#264f47" opacity="0.7"/>
+          <ellipse cx="40" cy="68" rx="22" ry="14" fill="#264f47" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Anita Sharma</h3>
+      <p class="muted">Founder &amp; Director</p>
+    </div>
+    <div class="team-card reveal" data-delay="320">
+      <div class="team-avatar" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <circle cx="40" cy="40" r="40" fill="#e7f2ed"/>
+          <circle cx="40" cy="32" r="14" fill="#264f47" opacity="0.7"/>
+          <ellipse cx="40" cy="68" rx="22" ry="14" fill="#264f47" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Ritu Negi</h3>
+      <p class="muted">Program Coordinator</p>
+    </div>
+    <div class="team-card reveal" data-delay="340">
+      <div class="team-avatar" aria-hidden="true">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+          <circle cx="40" cy="40" r="40" fill="#e7f2ed"/>
+          <circle cx="40" cy="32" r="14" fill="#264f47" opacity="0.7"/>
+          <ellipse cx="40" cy="68" rx="22" ry="14" fill="#264f47" opacity="0.5"/>
+        </svg>
+      </div>
+      <h3>Sapna Thakur</h3>
+      <p class="muted">Field Manager</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Footer ================= -->
+<footer role="contentinfo" aria-label="Footer">
+  <div class="container footer-grid">
+    <div class="col">
+      <strong>HIMWAL</strong>
+      <p class="small">Himalayan Women Awareness &amp; Livelihood Society</p>
+      <p class="small" style="margin-top:8px">Connecting communities • Preserving culture • Enabling livelihoods</p>
+    </div>
+
+    <div class="col" style="text-align:right">
+      <p class="small">Follow us</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook" title="Facebook">FB</a>
+        <a href="#" aria-label="Instagram" title="Instagram">IG</a>
+        <a href="#" aria-label="Twitter" title="Twitter">X</a>
+      </div>
+      <p class="small" style="margin-top:10px">&copy; <span id="year"></span> HIMWAL. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
 </body>
 </html>
