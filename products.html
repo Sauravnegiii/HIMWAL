@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products | HIMWAL</title>
+  <meta name="description" content="Handcrafted products made by HIMWAL's trained women artisans — supporting sustainable livelihoods in Uttarakhand.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="LOGO.jpg">
+  <style>
+    /* Products-page specific styles */
+    .products-hero-note {
+      background: rgba(230, 126, 34, 0.08);
+      border-left: 4px solid var(--color-secondary);
+      padding: 18px 24px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin-bottom: 48px;
+      color: var(--color-text);
+      font-size: 0.97rem;
+      max-width: 780px;
+    }
+
+    .products-hero-note strong { color: var(--color-secondary-dark); }
+
+    .products-category-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .cat-tab {
+      padding: 9px 22px;
+      border: 2px solid var(--color-primary);
+      background: transparent;
+      color: var(--color-primary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .cat-tab:hover, .cat-tab.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .enquire-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      background: var(--color-primary);
+      color: white;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .enquire-btn:hover {
+      background: var(--color-primary-dark);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    .impact-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: var(--color-bg-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      margin-top: 60px;
+      border: 1px solid var(--color-border);
+    }
+
+    .impact-note-icon {
+      width: 56px;
+      height: 56px;
+      min-width: 56px;
+      background: var(--color-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .impact-note-icon svg {
+      width: 28px; height: 28px;
+      color: white;
+    }
+
+    .impact-note-text h3 { color: var(--color-primary); margin-bottom: 8px; }
+    .impact-note-text p { color: var(--color-text-light); line-height: 1.75; }
+
+    @media (max-width: 600px) {
+      .impact-note { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="LOGO.jpg" alt="HIMWAL Logo">
+      <div class="logo-text">
+        <span class="logo-title">HIMWAL</span>
+        <span class="logo-tagline">Himalayan Women Awareness & Livelihood Society</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-primary">Donate</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Community Products</h1>
+    <p>Handcrafted by HIMWAL's trained women artisans — every purchase supports a livelihood</p>
+  </div>
+</div>
+
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+  <div class="container breadcrumb-inner">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Products</span>
+  </div>
+</div>
+
+<!-- Products Section -->
+<section class="section">
+  <div class="container">
+
+    <div class="products-hero-note">
+      <strong>🌿 Buy with Purpose.</strong> All products are crafted by women trained through HIMWAL's livelihood programs in Uttarakhand. Each purchase directly supports artisan incomes and sustains our community programs. To enquire or place an order, contact us at <a href="mailto:himwalsociety@gmail.com">himwalsociety@gmail.com</a>.
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="products-category-tabs">
+      <button class="cat-tab active" data-filter="all">All Products</button>
+      <button class="cat-tab" data-filter="textiles">Textiles & Weaving</button>
+      <button class="cat-tab" data-filter="food">Organic Foods</button>
+      <button class="cat-tab" data-filter="craft">Handicrafts</button>
+      <button class="cat-tab" data-filter="wellness">Wellness</button>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" id="products-grid">
+
+      <div class="product-card" data-category="textiles">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Handwoven Pahadi shawl" loading="lazy">
+          <span class="product-badge">Bestseller</span>
+        </div>
+        <div class="product-content">
+          <h3>Handwoven Pahadi Shawl</h3>
+          <p>Traditionally woven woollen shawl from Chamoli district, crafted by HIMWAL artisans using age-old techniques passed down through generations.</p>
+          <div class="product-footer">
+            <div class="product-price">₹1,200 <span>/ piece</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Handwoven Pahadi Shawl" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="food">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Organic mountain honey" loading="lazy">
+          <span class="product-badge">Organic</span>
+        </div>
+        <div class="product-content">
+          <h3>Himalayan Wildflower Honey</h3>
+          <p>Pure, raw honey collected from high-altitude wildflower meadows. Unprocessed and rich in natural enzymes, harvested sustainably by women beekeepers.</p>
+          <div class="product-footer">
+            <div class="product-price">₹450 <span>/ 500g</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Himalayan Wildflower Honey" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="craft">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Ringal bamboo basket" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Ringal Bamboo Basket</h3>
+          <p>Hand-woven baskets made from locally sourced Ringal bamboo. Durable, eco-friendly, and carrying the craft heritage of Himalayan villages.</p>
+          <div class="product-footer">
+            <div class="product-price">₹380 <span>/ piece</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Ringal Bamboo Basket" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="food">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Pahadi masala spice blend" loading="lazy">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-content">
+          <h3>Pahadi Masala Blend</h3>
+          <p>A traditional spice blend from Uttarakhand's kitchens — sun-dried, hand-ground, and packed with authentic mountain flavour. No additives, 100% natural.</p>
+          <div class="product-footer">
+            <div class="product-price">₹220 <span>/ 200g</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Pahadi Masala Blend" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="wellness">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Herbal tulsi tea" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Himalayan Herbal Tea</h3>
+          <p>A hand-blended mix of Tulsi, Brahmi, and mountain herbs grown at high altitude. Naturally caffeine-free and ideal for daily wellness rituals.</p>
+          <div class="product-footer">
+            <div class="product-price">₹180 <span>/ 100g</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Himalayan Herbal Tea" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="textiles">
+        <div class="product-image">
+          <img src="titleimage.jpg" alt="Embroidered tote bag" loading="lazy">
+          <span class="product-badge">Limited</span>
+        </div>
+        <div class="product-content">
+          <h3>Embroidered Tote Bag</h3>
+          <p>Cotton tote bags hand-embroidered with traditional Garhwali motifs. Sturdy, reusable, and a beautiful piece of wearable art from the mountains.</p>
+          <div class="product-footer">
+            <div class="product-price">₹650 <span>/ piece</span></div>
+            <a href="mailto:himwalsociety@gmail.com?subject=Enquiry: Embroidered Tote Bag" class="enquire-btn">Enquire</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /products-grid -->
+
+    <!-- Impact Note -->
+    <div class="impact-note">
+      <div class="impact-note-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="impact-note-text">
+        <h3>Your Purchase Makes a Difference</h3>
+        <p>Every product you buy is made by a woman who has graduated from HIMWAL's skills program. The income she earns goes directly to her family, supports her children's education, and strengthens her community. By choosing HIMWAL products, you are participating in a cycle of lasting change in the Himalayas.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Interested in Bulk Orders?</h2>
+    <p>We welcome bulk orders for corporate gifting, events, and institutional purchases. Reach out to us to discuss.</p>
+    <a href="mailto:himwalsociety@gmail.com?subject=Bulk Order Enquiry" class="btn btn-outline btn-lg">Contact Us</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="LOGO.jpg" alt="HIMWAL Logo" class="footer-logo">
+      <div>
+        <strong>HIMWAL</strong>
+        <p>Himalayan Women Awareness & Livelihood Society</p>
+        <p class="footer-tagline">Connecting communities • Preserving culture • Enabling livelihoods</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="products.html">Products</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Twitter">X</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="year"></span> HIMWAL. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+<script>
+  // Products category filter
+  document.addEventListener('DOMContentLoaded', function () {
+    const catTabs = document.querySelectorAll('.cat-tab');
+    const productCards = document.querySelectorAll('.product-card');
+
+    catTabs.forEach(tab => {
+      tab.addEventListener('click', function () {
+        catTabs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        const filter = this.getAttribute('data-filter');
+        productCards.forEach(card => {
+          card.style.display = (filter === 'all' || card.getAttribute('data-category') === filter) ? '' : 'none';
+        });
+      });
+    });
+  });
+</script>
+</body>
+</html>
