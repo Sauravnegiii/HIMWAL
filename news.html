@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News & Announcements | HIMWAL</title>
+  <meta name="description" content="Stay informed about HIMWAL's latest initiatives, awareness campaigns, workshops, community outreach programmes and important notices.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="LOGO.jpg">
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="LOGO.jpg" alt="HIMWAL Logo">
+      <div class="logo-text">
+        <span class="logo-title">HIMWAL</span>
+        <span class="logo-tagline">संस्कृति, पर्यावरण एवं महिलाओं के लिये समर्पित।</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="products.html">Products</a>
+      <a href="news.html" class="active">News</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-primary">Donate</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Page Hero -->
+<section class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="container page-hero-content">
+    <span class="hero-badge">Latest Updates</span>
+    <h1>News &amp; Announcements</h1>
+    <p>Stay informed about our latest initiatives, awareness campaigns, workshops, community outreach programmes and important notices.</p>
+  </div>
+</section>
+
+<!-- Featured News -->
+<section id="featured-news" class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured News</h2>
+      <div class="section-line"></div>
+      <p>Highlights from our recent programmes and community engagements across Uttarakhand.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <article class="news-card">
+        <figure class="news-card-image-wrapper">
+          <img class="news-card-image" src="images/news1.jpg" alt="Volunteers planting saplings during a HIMWAL environment awareness drive">
+          <span class="news-card-badge badge-environment">Environment</span>
+        </figure>
+        <div class="program-content">
+          <time class="program-tag" datetime="2026-06-18">June 18, 2026</time>
+          <h3>Paryavaran Jagrukta Karyakram Reaches Five New Villages</h3>
+          <p>Our environment awareness programme expanded to five new villages this month, engaging over 200 students in tree plantation and waste management workshops.</p>
+          <a href="#" class="btn btn-secondary">View Report &rarr;</a>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <figure class="news-card-image-wrapper">
+          <img class="news-card-image" src="images/news2.jpg" alt="Community nutrition workshop conducted by HIMWAL health team">
+          <span class="news-card-badge badge-health">Health</span>
+        </figure>
+        <div class="program-content">
+          <time class="program-tag" datetime="2026-06-05">June 5, 2026</time>
+          <h3>Bhojan Vikas Karyakram Marks 1,000 Households Reached</h3>
+          <p>Our nutrition and health outreach programme crossed a major milestone this quarter, bringing dietary awareness sessions to rural households in Chamoli.</p>
+          <a href="#" class="btn btn-secondary">View Report &rarr;</a>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <figure class="news-card-image-wrapper">
+          <img class="news-card-image" src="images/news3.jpg" alt="Rural women receiving livelihood training from HIMWAL facilitators">
+          <span class="news-card-badge badge-empowerment">Women Empowerment</span>
+        </figure>
+        <div class="program-content">
+          <time class="program-tag" datetime="2026-05-22">May 22, 2026</time>
+          <h3>New Livelihood Cohort Begins Training in Joshimath Block</h3>
+          <p>Thirty women from the Painkhanda Development Block have joined our latest skills and livelihood cohort, focused on handicrafts and seed conservation.</p>
+          <a href="#" class="btn btn-secondary">View Report &rarr;</a>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <figure class="news-card-image-wrapper">
+          <img class="news-card-image" src="images/news4.jpg" alt="Students attending a HIMWAL cultural heritage education workshop">
+          <span class="news-card-badge badge-education">Education</span>
+        </figure>
+        <div class="program-content">
+          <time class="program-tag" datetime="2026-05-10">May 10, 2026</time>
+          <h3>School Workshop Series on Lok Sanskriti Concludes Successfully</h3>
+          <p>Over 150 students took part in our folk culture and heritage education series, learning about traditional instruments, rituals, and oral history.</p>
+          <a href="#" class="btn btn-secondary">View Report &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Older Notices -->
+<section id="older-notices" class="section section-light">
+  <div class="container">
+    <div class="section-header">
+      <h2>Older Notices</h2>
+      <div class="section-line"></div>
+      <p>Browse our archive of past notices and circulars, organised by year.</p>
+    </div>
+
+    <div class="older-notices-toggle-wrapper" style="text-align: center;">
+      <button type="button" class="btn btn-secondary" id="btn-toggle-older" aria-expanded="false" aria-controls="older-notices-container">Show Older Notices</button>
+    </div>
+
+    <div class="older-notices-container" id="older-notices-container">
+      <table class="older-notices-table">
+        <thead>
+          <tr>
+            <th scope="col">Year</th>
+            <th scope="col">Month</th>
+            <th scope="col">Title</th>
+            <th scope="col">PDF</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025</td>
+            <td>December</td>
+            <td>Winter Outreach Programme &ndash; Beneficiary List</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>November</td>
+            <td>Notice: Board Meeting Resolutions, Q3 2025</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>November</td>
+            <td>Recruitment Notice: Community Health Volunteer</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>October</td>
+            <td>Circular: Revised Guidelines for Field Reporting</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>September</td>
+            <td>Notice: Annual Audit Completion 2024&ndash;25</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>August</td>
+            <td>Call for Volunteers: Independence Day Awareness Camp</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>July</td>
+            <td>Public Notice: Partnership with Doon Library and Research Center</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>June</td>
+            <td>Tender Notice: Printing of Educational Materials</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>May</td>
+            <td>Notice: Monsoon Preparedness Guidelines for Villages</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>April</td>
+            <td>Annual General Meeting 2025 &ndash; Minutes</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>March</td>
+            <td>Notice: International Women's Day Programme Report</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>February</td>
+            <td>Recruitment Notice: Outreach Assistant (Dehradun HQ)</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2025</td>
+            <td>January</td>
+            <td>Circular: Revised Contact Details for Headquarters</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>November</td>
+            <td>Notice: Registration Renewal Confirmation</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td>September</td>
+            <td>Public Notice: Launch of Beej Sanrakhshan Karyakram</td>
+            <td><a href="#" class="btn-notice-download">View PDF</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="LOGO.jpg" alt="HIMWAL Logo" class="footer-logo">
+      <div>
+        <strong>HIMWAL Society</strong>
+        <p>Himalayan Women Awareness & Livelihood</p>
+        <p class="footer-tagline">Registration Number: UK06008122023012444</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="programs.html">Our Programs</a>
+      <a href="gallery.html">Photo Gallery</a>
+      <a href="news.html">News</a>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/yourusername"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 24 24">
+            <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/>
+        </svg>
+        </a>
+        <a href="https://www.instagram.com/himwal.23?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+        target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm8.75 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+        </svg>
+        </a>
+            
+    </div>
+      <p style="margin-top: 10px; font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+      <p>&copy; <span id="year"></span> HIMWAL. <br>All rights reserved. <br>Registration: UK06008122023012444</p>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+</body>
+</html>
