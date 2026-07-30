@@ -271,6 +271,8 @@ button, input, textarea, select {
 
 .btn-block { width: 100%; }
 
+button.btn { cursor: pointer; }
+
 /* ========================================
    Page Hero (subpages)
    ======================================== */
@@ -764,6 +766,169 @@ button, input, textarea, select {
 }
 
 /* ========================================
+   Products Page: Purpose Banner
+   ======================================== */
+.purpose-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.purpose-banner-text { flex: 1 1 320px; color: var(--color-text-light); }
+.purpose-banner-text strong {
+  color: var(--color-secondary-dark);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.purpose-banner-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+@media (max-width: 640px) {
+  .purpose-banner { flex-direction: column; align-items: flex-start; text-align: left; }
+}
+
+/* ========================================
+   Products Page: Catalogue & WhatsApp Cards
+   ======================================== */
+.catalog-whatsapp-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  margin-top: 60px;
+  align-items: stretch;
+}
+
+.catalog-card {
+  background: var(--color-bg-light);
+  border: 2px dashed var(--color-primary-light);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.catalog-card h3 { color: var(--color-primary); font-size: 1.3rem; margin-bottom: 8px; }
+.catalog-card p { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 20px; }
+.catalog-card a { display: inline-flex; align-items: center; gap: 8px; }
+
+.whatsapp-card {
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.whatsapp-card h4 { color: var(--color-secondary-dark); font-size: 1.1rem; margin-bottom: 6px; }
+.whatsapp-card p { color: var(--color-text-light); font-size: 0.85rem; margin-bottom: 16px; }
+
+.whatsapp-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+@media (max-width: 640px) {
+  .catalog-whatsapp-grid { grid-template-columns: 1fr; margin-top: 32px; }
+}
+
+/* ========================================
+   Products Page: Order Enquiry Modal
+   ======================================== */
+.order-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(4px);
+  box-sizing: border-box;
+}
+
+.modal-box {
+  background: white;
+  width: 100%;
+  max-width: 550px;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-box h3 { margin-bottom: 8px; color: var(--color-primary); }
+.modal-box > p { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 24px; }
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px; right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--color-text-light);
+  line-height: 1;
+}
+
+.modal-form { display: flex; flex-direction: column; gap: 16px; }
+
+.modal-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.modal-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.modal-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+}
+
+.modal-input:focus { outline: none; border-color: var(--color-primary); }
+select.modal-input { background: white; }
+textarea.modal-input { resize: vertical; }
+
+.modal-submit-btn { margin-top: 8px; font-size: 1.05rem; padding: 14px; }
+
+@media (max-width: 480px) {
+  .modal-form-row { grid-template-columns: 1fr; }
+  .modal-box { padding: 20px; }
+  .order-modal-overlay { padding: 12px; }
+}
+
+/* ========================================
    Impact & CTA Sections
    ======================================== */
 .cta-band {
@@ -1089,6 +1254,8 @@ button, input, textarea, select {
   transition: all var(--transition);
 }
 
+.enquire-btn--block { width: 100%; justify-content: center; }
+
 .enquire-btn:hover {
   background: var(--color-primary-dark);
   color: white;
@@ -1130,6 +1297,8 @@ button, input, textarea, select {
 
 .impact-note-text h3 { color: var(--color-primary); margin-bottom: 8px; }
 .impact-note-text p { color: var(--color-text-light); line-height: 1.75; }
+
+.impact-note--tight { margin-top: 48px; }
 
 @media (max-width: 600px) {
   .impact-note { flex-direction: column; align-items: center; text-align: center; }
