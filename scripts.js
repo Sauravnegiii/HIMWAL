@@ -2,13 +2,6 @@
 // HIMWAL - Shared Scripts
 // ========================================
 
-// Fix: when returning via browser back/forward, the page can be restored
-// from bfcache with the 'page-transition-exit' class still applied,
-// leaving the body invisible (blank screen). Always clear it on show.
-window.addEventListener('pageshow', function (event) {
-  document.body.classList.remove('page-transition-exit');
-});
-
 document.addEventListener('DOMContentLoaded', function () {
 
   // Set current year
@@ -25,21 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
       this.classList.toggle('active');
     });
   }
-
-  // Page transitions
-  document.querySelectorAll('a[href]').forEach(anchor => {
-    const href = anchor.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || anchor.target === '_blank') return;
-
-    const linkUrl = new URL(anchor.href, window.location.origin);
-    if (linkUrl.origin !== window.location.origin) return;
-
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.body.classList.add('page-transition-exit');
-      setTimeout(() => { window.location.href = anchor.href; }, 550);
-    });
-  });
 
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

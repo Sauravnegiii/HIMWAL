@@ -54,12 +54,7 @@ body {
   background: radial-gradient(circle at top, rgba(108, 179, 138, 0.18), transparent 28%), var(--color-bg);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
-  transition: opacity 0.55s ease;
   overflow-x: hidden; /* Prevents horizontal scroll on small devices */
-}
-
-body.page-transition-exit {
-  opacity: 0;
 }
 
 img {
