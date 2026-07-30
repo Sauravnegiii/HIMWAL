@@ -2,6 +2,13 @@
 // HIMWAL - Shared Scripts
 // ========================================
 
+// Fix: when returning via browser back/forward, the page can be restored
+// from bfcache with the 'page-transition-exit' class still applied,
+// leaving the body invisible (blank screen). Always clear it on show.
+window.addEventListener('pageshow', function (event) {
+  document.body.classList.remove('page-transition-exit');
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 
   // Set current year
