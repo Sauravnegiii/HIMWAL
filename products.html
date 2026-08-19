@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products | HIMWAL</title>
+  <meta name="description" content="Explore HIMWAL's supported products.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="LOGO.jpeg">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="LOGO.jpeg" alt="HIMWAL Logo">
+      <div class="logo-text">
+        <span class="logo-title">HIMWAL</span>
+        <span class="logo-tagline">Himalayan Women Awareness & Livelihood Society</span>
+      </div>
+    </a>
+
+    <nav class="nav" id="main-nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="products.html" class="active">Products</a>
+      <a href="news.html">News</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="index.html#contact" class="btn btn-primary">Donate</a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <h1>Community Products</h1>
+    <p>Pure, organic, and handmade by HIMWAL's women artisans in rural Uttarakhand.</p>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="container breadcrumb-inner">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Products</span>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Purpose Banner -->
+    <div class="products-hero-note purpose-banner">
+      <div class="purpose-banner-text">
+        <strong>🌿 Pure, Handmade & Organic</strong>
+        We empower Pahadi women in rural Uttarakhand by providing them with sustainable livelihood opportunities. Every purchase directly supports artisan families and sustains our community initiatives.
+      </div>
+
+      <div class="purpose-banner-actions">
+        <button onclick="document.getElementById('orderModal').style.display='flex'" class="btn btn-primary">
+          Submit Order Enquiry
+        </button>
+      </div>
+    </div>
+    
+    <!-- CLEAN PRODUCT GRID (Symmetrical 3x2 Layout = 6 Items) -->
+    <div class="products-grid" id="products-grid">
+
+      <!-- Item 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Pahadi Pickles and Chutneys" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Pickles & Chutney Powders</h3>
+          <p>Authentic garlic, mixed vegetable, lemon, and stuffed chilli pickles, alongside instant dried mountain chutney blends (Bhangjeera, Pudina, Sesame).</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Pahadi Flavored Salt" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Pahadi Salt (पिस्यू लूँन)</h3>
+          <p>Traditional rock salt ground with organic seeds and herbs. Available in Hemp seed, Flax seed, Bhangjeera, Garlic/Coriander, Sesame, and Timur flavors.</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Chakrata Rajma and Pulses" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Himalayan Pulses & Rajma</h3>
+          <p>Pure, chemical-free Chakrata Rajma, Rajma Chhemi, Gehat (Horse gram), Black Gram (Urad), and Yellow/Black Soyabean from high-altitude farms.</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Traditional Badi and Flour" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Badi, Flours & Ladoos</h3>
+          <p>Handcrafted Urad, Moong, and Mixed Dal Badis, organic millet and wheat flours, roasted Chausa blends, and wholesome Manduwa (Ragi) ladoos.</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Medicinal Dhoop and Sacred Items" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Herbal Dhoop & Sacred Goods</h3>
+          <p>Hand-rolled organic medicinal herbal dhoop packets, sun-dried apple slices, and pure Gangotri Gangajal sourced directly from the Himalayas.</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="titleimg.jpeg" alt="Handcrafted Souvenirs and Art" loading="lazy">
+        </div>
+        <div class="product-content">
+          <h3>Handcrafted Souvenirs & Art</h3>
+          <p>Hand-painted keychains and fridge magnets showcasing Uttarakhand heritage, custom canvas mountain paintings, and crochet accessories.</p>
+          <div class="product-footer">
+            <button onclick="document.getElementById('orderModal').style.display='flex'" class="enquire-btn enquire-btn--block">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DIRECT PDF CATALOGUE & COMPACT WHATSAPP SECTION -->
+    <div class="catalog-whatsapp-grid">
+      
+      <!-- PDF Download Card (Main Focus) -->
+      <div class="catalog-card">
+        <h3>Explore Our Complete Catalogue & Rates</h3>
+        <p>Download our full catalog PDF to view all individual item listings, units, and seasonal pricing.</p>
+        <!-- REPLACE 'your-catalog.pdf' with your actual PDF link -->
+        <a href="PDFs/finalcatalogue.pdf" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Download Price List (PDF)
+        </a>
+      </div>
+
+      <!-- Compact WhatsApp Card -->
+      <div class="whatsapp-card">
+        <h4>Got Questions?</h4>
+        <p>Quick chat with us on WhatsApp.</p>
+        <a href="https://wa.me/919068682863?text=Hi%20HIMWAL,%20I%20would%20like%20to%20enquire%20about%20your%20products." target="_blank" rel="noopener noreferrer" class="btn whatsapp-btn">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.06-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          WhatsApp Chat
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Impact Statement -->
+    <div class="impact-note impact-note--tight">
+      <div class="impact-note-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="impact-note-text">
+        <h3>Your Purchase Makes a Difference</h3>
+        <p>Every product you buy is prepared by a woman who has partnered with HIMWAL's livelihood program. The income she earns goes directly to her family, supports her children's education, and strengthens her rural community. By choosing our organic and handmade goods, you are participating in a cycle of lasting change in the Himalayas.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="LOGO.jpeg" alt="HIMWAL Logo" class="footer-logo">
+      <div>
+        <strong>HIMWAL Society</strong>
+        <p>Himalayan Women Awareness & Livelihood</p>
+        <p class="footer-tagline">© 2026 HIMWAL</p>
+        <p class="footer-tagline">Registration Number: UK06008122023012444</p>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="programs.html">Our Programs</a>
+      <a href="gallery.html">Photo Gallery</a>
+    </div>
+
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/company/himalayan-women-awareness-and-livelihood-society/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8h4V24h-4V8zm7 0h3.84v2.19h.06c.53-1.01 1.84-2.19 3.79-2.19 4.05 0 4.81 2.67 4.81 6.13V24h-4v-7.02c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V24h-4V8z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/himwal.23?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M7.75 2C4.57 2 2 4.57 2 7.75v8.5C2 19.43 4.57 22 7.75 22h8.5C19.43 22 22 19.43 22 16.25v-8.5C22 4.57 19.43 2 16.25 2h-8.5zm0 2h8.5A3.75 3.75 0 0 1 20 7.75v8.5A3.75 3.75 0 0 1 16.25 20h-8.5A3.75 3.75 0 0 1 4 16.25v-8.5A3.75 3.75 0 0 1 7.75 4zm8.75 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 2a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/></svg>
+        </a>
+        <a href="https://wa.me/919068682863" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.06-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container">
+    </div>
+  </div>
+</footer>
+
+<!-- Professional Hidden Order Pop-Up Modal -->
+<div id="orderModal" class="order-modal-overlay">
+
+  <div class="modal-box">
+
+    <!-- Close Button (X) -->
+    <button onclick="document.getElementById('orderModal').style.display='none'" class="modal-close-btn">&times;</button>
+
+    <h3>Product Enquiry & Orders</h3>
+    <p>Please fill out your details below. Our team will contact you regarding availability and pricing within 48 hours.</p>
+
+    <!-- Web3Forms Form Integration -->
+    <form action="https://api.web3forms.com/submit" method="POST" class="modal-form">
+
+      <!-- Replace YOUR_WEB3FORMS_ACCESS_KEY with the key you receive in your email from web3forms.com -->
+      <input type="hidden" name="access_key" value="417ba672-82e0-4a64-8853-040d78e2b63a">
+
+      <div class="modal-form-row">
+        <div>
+          <label for="name" class="modal-label">Full Name *</label>
+          <input type="text" id="name" name="name" required placeholder="Your Name" class="modal-input">
+        </div>
+        <div>
+          <label for="phone" class="modal-label">Phone / WhatsApp *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+91 XXXXX XXXXX" class="modal-input">
+        </div>
+      </div>
+
+      <div>
+        <label for="email" class="modal-label">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com" class="modal-input">
+      </div>
+
+      <div>
+        <label for="Address" class="modal-label">Address *</label>
+        <input type="text" id="Address" name="Address" required placeholder="Your Address" class="modal-input">
+      </div>
+
+      <div>
+        <label for="product" class="modal-label">Category / Product of Interest *</label>
+        <select id="product" name="product" required class="modal-input">
+          <option value="" disabled selected>Select an option...</option>
+          <option value="Pahadi Pickles (अचार)">Pahadi Pickles (अचार)</option>
+          <option value="Pahadi Salt (पिस्यू लूँन)">Pahadi Salt (पिस्यू लूँन)</option>
+          <option value="Himalayan Pulses & Rajma">Himalayan Pulses & Rajma</option>
+          <option value="Badi, Flours & Ladoos">Badi, Flours & Ladoos</option>
+          <option value="Herbal Dhoop & Gangajal">Herbal Dhoop & Gangajal</option>
+          <option value="Handcrafted Souvenirs & Art">Handcrafted Souvenirs & Art</option>
+          <option value="Bulk Order / Custom Inquiry">Bulk Order / Custom Inquiry</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="message" class="modal-label">Specific Requirements & Quantity</label>
+        <textarea id="message" name="message" rows="3" placeholder="Mention items, quantities, or city for delivery..." class="modal-input"></textarea>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary btn-block modal-submit-btn">Submit Enquiry</button>
+    </form>
+  </div>
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>
