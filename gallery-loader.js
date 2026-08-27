@@ -69,14 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("prev-page")?.addEventListener("click", () => {
             if (currentPage > 1) {
                 renderPage(currentPage - 1);
-                gallery.scrollIntoView({ behavior: 'smooth' });
+                const headerOffset = 100;
+                const elementPosition = gallery.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
 
         document.getElementById("next-page")?.addEventListener("click", () => {
             if (currentPage < totalPages) {
                 renderPage(currentPage + 1);
-                gallery.scrollIntoView({ behavior: 'smooth' });
+                const headerOffset = 100;
+                const elementPosition = gallery.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
             }
         });
     }
