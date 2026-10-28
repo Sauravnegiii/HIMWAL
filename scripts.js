@@ -139,89 +139,64 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
-  // Dynamic Detail Boxes for Team and Advisors (about.html)
-  function setupDynamicDetailBox(config) {
-    const cards = document.querySelectorAll(config.cardsSelector);
-    const box = document.getElementById(config.boxId);
-    const img = document.getElementById(config.imgId);
-    const nameEl = document.getElementById(config.nameId);
-    const roleEl = document.getElementById(config.roleId);
-    const bioEl = document.getElementById(config.bioId);
-    const grid = document.getElementById(config.gridId);
+  // Profile Pop-Up Modal (about.html)
+  const profileModal = document.getElementById('profileModal');
+  const modalImg = document.getElementById('modalProfileImg');
+  const modalName = document.getElementById('modalProfileName');
+  const modalRole = document.getElementById('modalProfileRole');
+  const modalTag = document.getElementById('modalProfileTag');
+  const modalBio = document.getElementById('modalProfileBio');
+  const closeBtn = document.getElementById('closeProfileModal');
+  const closeBtnBottom = document.getElementById('closeProfileModalBtn');
+  const profileCards = document.querySelectorAll('.team-card');
 
-    if (!cards.length || !box) return;
-
-    let activeCard = cards[0];
-
-    function updateDetail(card, isClick) {
-      if (!card) return;
+  if (profileModal && profileCards.length) {
+    function openProfileModal(card) {
       const name = card.getAttribute('data-name');
       const role = card.getAttribute('data-role');
       const bio = card.getAttribute('data-bio');
-      const imgSrc = card.getAttribute('data-img');
+      const img = card.getAttribute('data-img');
+      const isAdvisor = card.classList.contains('advisor-card');
 
-      cards.forEach(c => c.classList.remove('is-active'));
-      card.classList.add('is-active');
-
-      if (isClick) {
-        activeCard = card;
+      if (modalName) modalName.textContent = name || '';
+      if (modalRole) modalRole.textContent = role || '';
+      if (modalBio) modalBio.textContent = bio || '';
+      if (modalTag) modalTag.textContent = isAdvisor ? 'Advisor & Mentor' : 'Team Member';
+      if (modalImg) {
+        modalImg.src = img || '';
+        modalImg.alt = name || 'Profile';
       }
 
-      const animatedNodes = [nameEl, roleEl, bioEl, img];
-      animatedNodes.forEach(node => node && node.classList.add('team-animating'));
-
-      setTimeout(() => {
-        if (nameEl && name) nameEl.textContent = name;
-        if (roleEl && role) roleEl.textContent = role;
-        if (bioEl && bio) bioEl.textContent = bio;
-        if (img && imgSrc) {
-          img.src = imgSrc;
-          img.alt = name || 'Profile Image';
-        }
-        animatedNodes.forEach(node => node && node.classList.remove('team-animating'));
-      }, 100);
+      profileModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
 
-    cards.forEach(card => {
-      card.addEventListener('mouseenter', function () {
-        updateDetail(this, false);
-      });
+    function closeProfileModal() {
+      profileModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
 
+    profileCards.forEach(card => {
       card.addEventListener('click', function () {
-        updateDetail(this, true);
+        openProfileModal(this);
       });
     });
 
-    if (grid) {
-      grid.addEventListener('mouseleave', function () {
-        if (activeCard) {
-          updateDetail(activeCard, false);
-        }
-      });
-    }
+    if (closeBtn) closeBtn.addEventListener('click', closeProfileModal);
+    if (closeBtnBottom) closeBtnBottom.addEventListener('click', closeProfileModal);
+
+    profileModal.addEventListener('click', function (e) {
+      if (e.target === profileModal) {
+        closeProfileModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && profileModal.style.display === 'flex') {
+        closeProfileModal();
+      }
+    });
   }
-
-  // Initialize Meet Our Team box
-  setupDynamicDetailBox({
-    cardsSelector: '.team-card:not(.advisor-card)',
-    boxId: 'team-detail-box',
-    imgId: 'team-detail-img',
-    nameId: 'team-detail-name',
-    roleId: 'team-detail-role',
-    bioId: 'team-detail-bio',
-    gridId: 'team-grid'
-  });
-
-  // Initialize Advisors & Mentors box
-  setupDynamicDetailBox({
-    cardsSelector: '.advisor-card',
-    boxId: 'advisor-detail-box',
-    imgId: 'advisor-detail-img',
-    nameId: 'advisor-detail-name',
-    roleId: 'advisor-detail-role',
-    bioId: 'advisor-detail-bio',
-    gridId: 'advisor-grid'
-  });
 
 });
 
