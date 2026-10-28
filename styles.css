@@ -1076,8 +1076,21 @@ textarea.modal-input { resize: vertical; }
 }
 .social-links a:hover { background: var(--color-secondary); }
 
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 0; text-align: center; }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 20px 0; text-align: center; }
 .footer-bottom p { font-size: 0.9rem; opacity: 0.7; }
+
+/* Developer names in footer */
+.developer-credit a {
+  color: #f2994a;
+  opacity: 1;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+  color: #ffffff;
+}
+
 
 /* ========================================
    Hero (index only)
