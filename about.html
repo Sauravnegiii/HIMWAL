@@ -204,10 +204,14 @@
     </div>
 
     <!-- Inline grid styling added here to override default wide columns and force a 4-column layout on desktop -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
+    <div class="team-grid" id="team-grid">
       
       <!-- Team Member 1 -->
-      <div class="program-card">
+      <div class="program-card team-card is-active"
+           data-name="Dr. Nand Kishore Hatwal"
+           data-role="President"
+           data-img="Images/about/1.webp"
+           data-bio="Dr. Nand Kishore Hatwal is an acclaimed author, scholar, poet, artist, and folklorist from Dehradun, Uttarakhand, with over four decades of experience in documenting and preserving the rich folk culture, traditions, and social realities of the Himalayan region. He has done PhD in Economics.  wrote the story, songs, and Garhwali dialogues for the critically noted film Dholi, directed by Dinesh P. Bhonsle, which explores social equality and the cultural significance of the Dholi community. His literary contributions include Bhaymukt Bugyal tatha Anya Kahaniya (2021) and Chanchari, a collection of Uttarakhandi folk songs. Through his scholarship and creative work, he has made significant contributions to the preservation and promotion of Uttarakhand's intangible cultural heritage. As the President of HIMWAL Society, he provides leadership and guidance to the organization's efforts in safeguarding Himalayan cultural traditions, promoting indigenous knowledge, and supporting sustainable community development.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/1.webp" alt="Dr. Nand Kishore Hatwal">
         </div>
@@ -218,20 +222,28 @@
       </div>
 
       <!-- Team Member 2 -->
-      <div class="program-card">
+      <div class="program-card team-card"
+           data-name="Dr. Deepika Dimri"
+           data-role="Founder &amp; Scientist"
+           data-img="Images/about/2.webp"
+           data-bio="Dr. Deepika Dimri is an environmental scientist, researcher, and academician with a Ph.D. in Environmental Science from Doon University, Dehradun. She is the Founder of HIMWAL (Himalayan Women, Awareness and Livelihood Society), an organization dedicated to biodiversity conservation, sustainable natural resource management, preservation of Himalayan traditional knowledge, and empowering rural communities, particularly women, through science and technology-based livelihood initiatives. With research experience at prestigious institutions in India and abroad, including IIT Delhi, UCOST, and the University of Pannonia, Hungary, her expertise encompasses water quality, limnology, climate change, biodiversity, and sustainable Himalayan livelihoods. She has contributed to several national and international research publications and currently serves as a Visiting Faculty at Graphic Era Hill University, Dehradun. As Principal Investigator of research projects supported by UCOST, she actively works towards integrating scientific innovation with indigenous knowledge to promote environmental sustainability, community development, and livelihood opportunities in the Himalayan region.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/2.webp" alt="Dr. Deepika Dimri">
         </div>
         <div class="program-content" style="text-align: center; padding: 20px;">
           <h3 style="margin-bottom: 4px; font-size: 1.15rem;">Dr. Deepika Dimri</h3>
-          <p style="color: var(--color-secondary); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Founder & Scientist</p>
+          <p style="color: var(--color-secondary); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin: 0;">Founder &amp; Scientist</p>
         </div>
       </div>
 
       <!-- Team Member 3 -->
-      <div class="program-card">
+      <div class="program-card team-card"
+           data-name="Dr. Shalini"
+           data-role="Project Coordinator"
+           data-img="Images/about/3.webp"
+           data-bio="Shalini is currently working as a Project Coordinator at the HIMWAL Research Organization in Uttarakhand, where she assists with environmental conservation projects. Her work at HIMWAL involves water quality assessment, livelihood programs, waste management, and guiding communities on the sustainable use of natural resources. She also conducts environmental awareness programs for school students regarding stewardship in the Himalayan region. Alongside her role at HIMWAL, she is pursuing her PhD at Lovely Professional University, focusing her research on wastewater treatment. Her extensive background includes previous research and internships with organizations like USAID (IPE Global), the University of Stirling, and the Wildlife Institute of India. Furthermore, she has contributed to academic literature through co-authored book chapters and research papers addressing environmental issues. ">
         <div class="program-image" style="height: 280px;">
-          <img src="Images/about/3.webp" alt="Dr. Shalini" style="width: 100%; height: auto;">
+          <img src="Images/about/3.webp" alt="Dr. Shalini">
         </div>
         <div class="program-content" style="text-align: center; padding: 20px;">
           <h3 style="margin-bottom: 4px; font-size: 1.15rem;">Dr. Shalini</h3>
@@ -240,7 +252,12 @@
       </div>
 
       <!-- Team Member 4 -->
-      <div class="program-card">
+      <div class="program-card team-card"
+           data-name="Mr. Utkarsh Semalti"
+           data-role="Operations &amp; Outreach Associate, Co-Founder"
+           data-img="Images/about/4.webp"
+           data-bio="Utkarsh is a dedicated professional currently serving as an Operations and Outreach Associate at HIMWAL (Himalayan Women Awareness and Livelihood Society). In this role, he has been actively involved in community development and livelihood initiatives. His professional journey reflects a strong commitment to impactful grassroots work and stakeholder engagement. 
+Academically, Utkarsh has a distinguished background having completed his integrated bachelor's program (IPM) from IIM Indore. Building on this strong foundation, he is currently pursuing his MBA at IIM Ahmedabad. During his academic journey, he has demonstrated exceptional scholastic achievements, including scoring a high percentile in the CAT examination.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/4.webp" alt="Mr. Utkarsh Semalti">
         </div>
@@ -250,8 +267,14 @@
         </div>
       </div>
 
-      <!--Team Member 5 -->
-      <div class="program-card">
+      <!-- Team Member 5 -->
+      <div class="program-card team-card"
+           data-name="Ms. Pragya Semalti"
+           data-role="IT &amp; Digital Operations Associate"
+           data-img="Images/about/5.webp"
+           data-bio="Pragya is currently pursuing her B.Tech in Electronics and Communication Engineering at the College of Technology, GBPUA&T, Pantnagar. She began her journey with HIMWAL as a student volunteer and now serves as their IT and Digital Operation Associate.
+Her professional background includes valuable internship experience working with the Uttarakhand Space Application Center. She has also gained practical industry exposure working with UJVN Limited under the Ministry of Power, Government of Uttarakhand.
+Adding to her technical credentials, she is an active member of the Robotics Club at Pantnagar. Furthermore, she demonstrates strong leadership and management skills as a co-coordinator for the Entrepreneurship Cell (E-Cell) at Pantnagar.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/5.webp" alt="Ms. Pragya Semalti">
         </div>
@@ -262,7 +285,11 @@
       </div>
 
       <!-- Team Member 6 -->
-      <div class="program-card">
+      <div class="program-card team-card"
+           data-name="Mr. Saurav Singh Negi"
+           data-role="Technical Member"
+           data-img="Images/about/10.webp"
+           data-bio="Drives web technologies, technical infrastructure, and software solutions for HIMWAL. Saurav develops digital platforms and interactive features that empower the organization's outreach, data-driven initiatives, and online educational resources.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/10.webp" alt="Saurav Singh Negi">
         </div>
@@ -273,7 +300,11 @@
       </div>
 
       <!-- Team Member 7 -->
-      <div class="program-card">
+      <div class="program-card team-card"
+           data-name="Mr. Aakash Singh Mahori"
+           data-role="Technical Member"
+           data-img="Images/about/11.webp"
+           data-bio="Contributes to technical development, digital systems, and website maintenance. Aakash specializes in developing scalable digital tools, ensuring platform performance, and supporting technological integration for community-facing projects.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/11.webp" alt="Mr. Aakash Singh Mahori">
         </div>
@@ -283,6 +314,44 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Dynamic Team Member Detail Box -->
+    <div class="team-detail-box" id="team-detail-box" aria-live="polite">
+      <div class="team-detail-inner">
+        <div class="team-detail-avatar-wrapper">
+          <img id="team-detail-img" src="Images/about/1.webp" alt="Dr. Nand Kishore Hatwal" class="team-detail-img">
+          <div class="team-detail-status-dot" title="Active member spotlight"></div>
+        </div>
+        <div class="team-detail-content">
+          <div class="team-detail-header">
+            <div>
+              <span class="team-detail-role" id="team-detail-role">President</span>
+              <h3 class="team-detail-name" id="team-detail-name">Dr. Nand Kishore Hatwal</h3>
+            </div>
+            <div class="team-detail-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Team Spotlight</span>
+            </div>
+          </div>
+          <p class="team-detail-bio" id="team-detail-bio">
+            Dr. Nand Kishore Hatwal is an acclaimed author, scholar, poet, artist, and folklorist from Dehradun, Uttarakhand, with over four decades of experience in documenting and preserving the rich folk culture, traditions, and social realities of the Himalayan region. He has done PhD in Economics. He wrote the story, songs, and Garhwali dialogues for the critically noted film Dholi, directed by Dinesh P. Bhonsle, which explores social equality and the cultural significance of the Dholi community. His literary contributions include Bhaymukt Bugyal tatha Anya Kahaniya (2021) and Chanchari, a collection of Uttarakhandi folk songs. Through his scholarship and creative work, he has made significant contributions to the preservation and promotion of Uttarakhand's intangible cultural heritage. As the President of HIMWAL Society, he provides leadership and guidance to the organization's efforts in safeguarding Himalayan cultural traditions, promoting indigenous knowledge, and supporting sustainable community development.
+          </p>
+          <div class="team-detail-footer">
+            <span class="team-detail-hint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Hover over or click any team member above to view their profile details
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -296,11 +365,15 @@
       <p>Our mentors and advisors are the guiding force behind HIMWAL, providing invaluable expertise and leadership to help us achieve our mission of preserving Uttarakhand's ecology and heritage.</p>
     </div>
 
-    <!-- Inline grid styling added here to override default wide columns and force a 4-column layout on desktop -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px;">
+    <!-- Advisors and Mentors Grid -->
+    <div class="team-grid" id="advisor-grid">
       
       <!-- AM 1 -->
-      <div class="program-card">
+      <div class="program-card team-card advisor-card is-active"
+           data-name="Shri Chandi Prasad Bhatt"
+           data-role="Principal Advisor"
+           data-img="Images/about/6.webp"
+           data-bio="Shri Chandi Prasad Bhatt is a renowned Indian environmentalist, Gandhian social activist, and pioneer of the historic Chipko Movement in Uttarakhand. He is widely recognized for his remarkable contribution to forest conservation, environmental protection, and sustainable development in the Himalayan region. Through his leadership, he promoted nonviolent community-based movements to protect forests from deforestation and exploitation. He has dedicated his life to empowering local communities, particularly women, through environmental awareness and sustainable natural resource management. His outstanding contributions have been recognized with prestigious honours, including the Ramon Magsaysay Award, Padma Shri, and Padma Bhushan. As the Senior Advisor of HIMWAL Society, his invaluable experience, wisdom, and guidance inspire the organization's initiatives in biodiversity conservation, environmental sustainability, and community-based rural livelihoods in the Himalayan region.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/6.webp" alt="Shri Chandi Prasad Bhatt">
         </div>
@@ -311,7 +384,13 @@
       </div>
 
       <!-- AM 2 -->
-      <div class="program-card">
+      <div class="program-card team-card advisor-card"
+           data-name="Dr. Manmohan Rawat"
+           data-role="Advisor, Ph.D (Geology)"
+           data-img="Images/about/7.webp"
+           data-bio="Dr. Rawat is a Scientific Officer and Head of Research & Development at UCOST, specializing in RS&GIS, D-GPS, the water sector, and disaster management.
+He brings vast expertise in GIS, active tectonics, national geomorphology mapping, and landslide stabilization and early warning models. His distinguished career includes previous associations with prominent organizations such as USAC Dehradun, C-MMACS Bengaluru, IIT Kharagpur, and GBPIHED Sikkim. His academic contributions comprise more than 50 research papers in reputed scientific journals, 10 technical reports, and participation in nearly 20 training programs.
+Additionally, he is a member of the Indian Tropical Meteorology Dehradun Chapter, actively involved in science popularization, the NASI UK Chapter, and council SDI projects.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/7.webp" alt="Dr. Manmohan Rawat - Ph.D (Geology), Master of Science (Geology)">
         </div>
@@ -322,7 +401,11 @@
       </div>
 
       <!-- AM 3 -->
-      <div class="program-card">
+      <div class="program-card team-card advisor-card"
+           data-name="Dr. Ambika Kumar"
+           data-role="Advisor, PhD in Environmental-Analytical Chemistry"
+           data-img="Images/about/8.webp"
+           data-bio="Dr. Ambika Kumar serves as an Advisor with the HIMWAL society and is a Senior Assistant Professor in the Department of Chemistry at Bhagalpur National College, Bihar. He earned his Ph.D. in Environmental-Analytical Chemistry from IIT Roorkee in 2017, specializing in nanoscale-based material science for environmental remediation. Dr. Kumar has extensive expertise with advanced instrumentation including GC-MS, LC-MS/MS, AAS, ICP-MS, and advanced spectroscopy. He has published numerous research articles and book chapters in reputable international journals and serves as an editor for a forthcoming book by Springer Nature. Furthermore, he actively guides research scholars focusing on photocatalytic and antibacterial nanomaterials as well as heavy metal remediation. ">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/8.webp" alt="Dr. Ambika Kumar – PhD in Environmental-Analytical Chemistry from IIT Roorkee">
         </div>
@@ -333,7 +416,11 @@
       </div>
 
       <!-- AM 4 -->
-      <div class="program-card">
+      <div class="program-card team-card advisor-card"
+           data-name="Dr. Mayank Singh Bhakuni"
+           data-role="Advisor, PhD in Operations Research"
+           data-img="Images/about/9.webp"
+           data-bio="Dr. Mayank Singh Bhakuni is an academician and researcher specializing in Mathematics, Operations Research, Fuzzy Set Theory, and Decision-Making Models. He holds a Ph.D. in Operations Research from Vellore Institute of Technology (VIT), Vellore, and an M.Sc. in Mathematics from the National Institute of Technology (NIT), Calicut. Currently serving as an Assistant Professor at Dayananda Sagar University, Bengaluru, he has extensive experience in teaching, research, and mathematical modelling. Since April 2024, he has been associated with the Himalayan Women Awareness and Livelihood Society (HIMWAL), Dehradun, as an Advisor, contributing his expertise in mathematical modelling, uncertainty analysis, and decision-support techniques to address environmental and social challenges in the Himalayan region.. Through his interdisciplinary expertise, he supports HIMWAL Society in developing research-based approaches for community resilience, environmental sustainability, and sustainable livelihoods in the Himalayan region.">
         <div class="program-image" style="height: 280px;">
           <img src="Images/about/9.webp" alt="Dr. Mayank Singh Bhakuni – PhD in Operations Research from Vellore Institute of Technology (VIT), Vellore">
         </div>
@@ -343,6 +430,43 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- Dynamic Advisor & Mentor Detail Box -->
+    <div class="team-detail-box" id="advisor-detail-box" aria-live="polite">
+      <div class="team-detail-inner">
+        <div class="team-detail-avatar-wrapper">
+          <img id="advisor-detail-img" src="Images/about/6.webp" alt="Shri Chandi Prasad Bhatt" class="team-detail-img">
+          <div class="team-detail-status-dot" title="Active advisor spotlight"></div>
+        </div>
+        <div class="team-detail-content">
+          <div class="team-detail-header">
+            <div>
+              <span class="team-detail-role" id="advisor-detail-role">Principal Advisor</span>
+              <h3 class="team-detail-name" id="advisor-detail-name">Shri Chandi Prasad Bhatt</h3>
+            </div>
+            <div class="team-detail-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+              <span>Advisor Spotlight</span>
+            </div>
+          </div>
+          <p class="team-detail-bio" id="advisor-detail-bio">
+            Shri Chandi Prasad Bhatt is a renowned Indian environmentalist, Gandhian social activist, and pioneer of the historic Chipko Movement in Uttarakhand. He is widely recognized for his remarkable contribution to forest conservation, environmental protection, and sustainable development in the Himalayan region. Through his leadership, he promoted nonviolent community-based movements to protect forests from deforestation and exploitation. He has dedicated his life to empowering local communities, particularly women, through environmental awareness and sustainable natural resource management. His outstanding contributions have been recognized with prestigious honours, including the Ramon Magsaysay Award, Padma Shri, and Padma Bhushan. As the Senior Advisor of HIMWAL Society, his invaluable experience, wisdom, and guidance inspire the organization's initiatives in biodiversity conservation, environmental sustainability, and community-based rural livelihoods in the Himalayan region.
+          </p>
+          <div class="team-detail-footer">
+            <span class="team-detail-hint">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              Hover over or click any advisor above to view their profile details
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

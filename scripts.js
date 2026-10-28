@@ -139,6 +139,89 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+  // Dynamic Detail Boxes for Team and Advisors (about.html)
+  function setupDynamicDetailBox(config) {
+    const cards = document.querySelectorAll(config.cardsSelector);
+    const box = document.getElementById(config.boxId);
+    const img = document.getElementById(config.imgId);
+    const nameEl = document.getElementById(config.nameId);
+    const roleEl = document.getElementById(config.roleId);
+    const bioEl = document.getElementById(config.bioId);
+    const grid = document.getElementById(config.gridId);
+
+    if (!cards.length || !box) return;
+
+    let activeCard = cards[0];
+
+    function updateDetail(card, isClick) {
+      if (!card) return;
+      const name = card.getAttribute('data-name');
+      const role = card.getAttribute('data-role');
+      const bio = card.getAttribute('data-bio');
+      const imgSrc = card.getAttribute('data-img');
+
+      cards.forEach(c => c.classList.remove('is-active'));
+      card.classList.add('is-active');
+
+      if (isClick) {
+        activeCard = card;
+      }
+
+      const animatedNodes = [nameEl, roleEl, bioEl, img];
+      animatedNodes.forEach(node => node && node.classList.add('team-animating'));
+
+      setTimeout(() => {
+        if (nameEl && name) nameEl.textContent = name;
+        if (roleEl && role) roleEl.textContent = role;
+        if (bioEl && bio) bioEl.textContent = bio;
+        if (img && imgSrc) {
+          img.src = imgSrc;
+          img.alt = name || 'Profile Image';
+        }
+        animatedNodes.forEach(node => node && node.classList.remove('team-animating'));
+      }, 100);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', function () {
+        updateDetail(this, false);
+      });
+
+      card.addEventListener('click', function () {
+        updateDetail(this, true);
+      });
+    });
+
+    if (grid) {
+      grid.addEventListener('mouseleave', function () {
+        if (activeCard) {
+          updateDetail(activeCard, false);
+        }
+      });
+    }
+  }
+
+  // Initialize Meet Our Team box
+  setupDynamicDetailBox({
+    cardsSelector: '.team-card:not(.advisor-card)',
+    boxId: 'team-detail-box',
+    imgId: 'team-detail-img',
+    nameId: 'team-detail-name',
+    roleId: 'team-detail-role',
+    bioId: 'team-detail-bio',
+    gridId: 'team-grid'
+  });
+
+  // Initialize Advisors & Mentors box
+  setupDynamicDetailBox({
+    cardsSelector: '.advisor-card',
+    boxId: 'advisor-detail-box',
+    imgId: 'advisor-detail-img',
+    nameId: 'advisor-detail-name',
+    roleId: 'advisor-detail-role',
+    bioId: 'advisor-detail-bio',
+    gridId: 'advisor-grid'
+  });
 
 });
 

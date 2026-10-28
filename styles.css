@@ -1556,3 +1556,204 @@ textarea.modal-input { resize: vertical; }
 .btn-back:hover svg {
   transform: translateX(-3px);
 }
+
+/* ========================================
+   Dynamic Team Member Detail Box & Cards
+   ======================================== */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px;
+}
+
+.team-card {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 36px rgba(28, 134, 92, 0.16);
+  border-color: rgba(28, 134, 92, 0.4);
+}
+
+.team-card.is-active {
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 32px rgba(28, 134, 92, 0.22);
+  transform: translateY(-4px);
+}
+
+.team-card.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 4px;
+  background: var(--color-primary);
+  border-radius: 4px 4px 0 0;
+}
+
+/* Broad Dynamic Information Box */
+.team-detail-box {
+  margin-top: 36px;
+  width: 100%;
+  background: linear-gradient(145deg, #ffffff 0%, #f7faf8 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(28, 134, 92, 0.2);
+  border-left: 6px solid var(--color-primary);
+  box-shadow: 0 14px 42px rgba(31, 45, 51, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.team-detail-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 32px 36px;
+}
+
+.team-detail-avatar-wrapper {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.team-detail-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 3px solid rgba(28, 134, 92, 0.25);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  background-color: #f0f4f2;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.team-detail-status-dot {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 18px;
+  height: 18px;
+  background: #10b981;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
+}
+
+.team-detail-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.team-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.team-detail-role {
+  display: inline-block;
+  padding: 3px 12px;
+  background: rgba(28, 134, 92, 0.12);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.team-detail-name {
+  font-size: 1.45rem;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.25;
+  transition: opacity 0.2s ease;
+}
+
+.team-detail-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  color: var(--color-primary);
+  border: 1px solid rgba(28, 134, 92, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(28, 134, 92, 0.06);
+}
+
+.team-detail-badge svg {
+  color: var(--color-primary);
+}
+
+.team-detail-bio {
+  color: #3b4953;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  margin: 12px 0 16px 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.team-detail-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed rgba(31, 45, 51, 0.12);
+  padding-top: 12px;
+  margin-top: 8px;
+}
+
+.team-detail-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  color: #6b7c88;
+}
+
+.team-detail-hint svg {
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.team-animating {
+  opacity: 0.25;
+  transform: translateY(3px);
+}
+
+@media (max-width: 768px) {
+  .team-detail-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    gap: 18px;
+  }
+  .team-detail-img {
+    width: 76px;
+    height: 76px;
+  }
+  .team-detail-name {
+    font-size: 1.25rem;
+  }
+  .team-detail-bio {
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+}
