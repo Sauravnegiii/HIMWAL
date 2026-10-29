@@ -1,0 +1,30 @@
+{
+  "name": "himwal-mern",
+  "version": "1.0.0",
+  "description": "HIMWAL - Himalayan Women Awareness & Livelihood Society (MERN Stack)",
+  "main": "server/src/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "start": "node server/src/index.js",
+    "build": "npm run build --prefix client",
+    "seed": "npm run seed --prefix server",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [
+    "himwal",
+    "mern",
+    "uttarakhand",
+    "ngo",
+    "react",
+    "express",
+    "mongodb",
+    "node"
+  ],
+  "author": "Saurav Singh Negi & Aakash Singh Mahori",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

@@ -1,66 +1,116 @@
-# HIMWAL NGO
+# HIMWAL - Himalayan Women Awareness & Livelihood Society (MERN Stack)
 
-HIMWAL is a non-governmental organization (NGO) dedicated to empowering communities, promoting sustainable development, and supporting environmental conservation efforts in the Himalayan region. We strive to uplift marginalized populations, foster education, and create opportunities for holistic growth.
+HIMWAL is an Uttarakhand-based NGO (Registration Number: UK06008122023012444) founded under the Societies Registration Act 21, 1860, dedicated to environmental conservation, sustainable Himalayan livelihoods, and preserving Uttarakhand's intangible cultural heritage.
 
-## Mission
-
-Our mission is to:
-- Empower rural Himalayan communities through education, skill development, and health initiatives.
-- Promote environmental awareness and sustainable practices to preserve the natural beauty and resources of the Himalayas.
-- Support women and youth by providing equal opportunities, leadership training, and entrepreneurial support.
-
-## Vision
-
-To create self-reliant, environmentally conscious, and socially empowered Himalayan communities that thrive sustainably.
-
-## Core Values
-
-- **Integrity:** Transparency and ethical practices in all our operations.
-- **Empowerment:** Encouraging self-sufficiency and leadership.
-- **Sustainability:** Promoting eco-friendly solutions and preserving biodiversity.
-- **Inclusivity:** Ensuring equal opportunities for all, regardless of gender, caste, or background.
-- **Collaboration:** Working together with local, national, and global partners.
-
-## Key Programs
-
-### 1. Education & Literacy
-- Scholarships for underprivileged children
-- Adult literacy campaigns
-- School infrastructure development
-
-### 2. Women Empowerment
-- Vocational training
-- Micro-finance initiatives
-- Health and hygiene awareness
-
-### 3. Environmental Conservation
-- Tree plantation drives
-- Waste management projects
-- Water resource management
-
-### 4. Health & Sanitation
-- Health camps and awareness workshops
-- Clean water initiatives
-- Sanitation infrastructure support
-
-## Get Involved
-
-We welcome volunteers, donors, and partners who share our vision. You can support HIMWAL by:
-- Volunteering for our programs
-- Donating to our initiatives
-- Partnering for joint projects
-
-## Contact Us
-
-- **Email:** info@himwalngo.org
-- **Website:** [www.himwalngo.org](http://www.himwalngo.org)
-- **Address:** HIMWAL NGO, Himalayan Region, India
-
-Follow us on social media:
-- [Facebook](#)
-- [Twitter](#)
-- [Instagram](#)
+This repository hosts the official web application built using the full **MERN Stack** (MongoDB, Express.js, React + Vite, Node.js).
 
 ---
 
-*Thank you for supporting HIMWAL and helping us make a positive impact in the Himalayas!*
+## 🏗️ Architecture Overview
+
+```
+HIMWAL/
+├── client/                     # Frontend (React 18 + Vite + React Router DOM)
+│   ├── src/
+│   │   ├── components/         # Navbar, Footer, TeamModal, LightboxModal, OrderInquiryModal, ImpactCounter
+│   │   ├── pages/              # Home, About, Programs, Products, Gallery, AlbumGallery, News, Archive, AdminPortal
+│   │   ├── App.jsx             # Client-side routing with ScrollToTop
+│   │   ├── index.css           # Full design system preserving authentic Himalayan styles
+│   │   └── main.jsx
+│   ├── vite.config.js          # Vite config with zero-copy root asset streaming
+│   └── package.json
+│
+├── server/                     # Backend API (Node.js + Express.js + Mongoose)
+│   ├── src/
+│   │   ├── config/db.js        # MongoDB connection with graceful fallback mode
+│   │   ├── models/             # Product, Program, TeamMember, News, Gallery, ContactMessage
+│   │   ├── routes/             # REST API endpoints for all collections
+│   │   ├── data/seedData.js    # Comprehensive initial Himalayan dataset
+│   │   ├── seeds/seed.js       # Database seeder script
+│   │   └── index.js            # Express server entry point with static media serving
+│   ├── .env.example
+│   └── package.json
+│
+├── legacy/                     # Complete archive of original static HTML/JS pages
+├── Images/                     # 250MB authentic photo archive (about, millet, IHBT, CULTURAL, Environment, products, etc.)
+├── PDFs/                       # Official documents (finalcatalogue.pdf, mou.pdf, cultural.pdf, project.pdf)
+├── LOGO.jpeg                   # Society emblem
+└── package.json                # Root package with concurrent dev runner
+```
+
+---
+
+## 🚀 Quick Start Guide
+
+### 1. Prerequisites
+- **Node.js** v18+ (tested on v24)
+- **npm** v9+
+- *(Optional)* **MongoDB** running locally (`mongodb://127.0.0.1:27017/himwal`) or a MongoDB Atlas URI in `server/.env`.
+  > *Note: If MongoDB is offline, the backend automatically runs in graceful fallback mode using the authentic Himalayan seed data so the frontend is immediately functional.*
+
+### 2. Install All Dependencies
+From the repository root:
+```bash
+npm run install:all
+```
+*(Or install in root, `server/`, and `client/` individually)*
+
+### 3. Run Development Environment
+To start both the Express backend (`http://localhost:5000`) and the Vite React frontend (`http://localhost:5173`) concurrently:
+```bash
+npm run dev
+```
+
+You can also run them in separate terminals:
+```bash
+# Terminal 1: Backend API
+npm run server
+
+# Terminal 2: Frontend Client
+npm run client
+```
+
+### 4. Seed the Database (Optional)
+When your MongoDB instance is running:
+```bash
+npm run seed
+```
+
+---
+
+## 📡 REST API Endpoints
+
+| Endpoint | Method | Description |
+|---|---|---|
+| `/api/health` | `GET` | Health check & database connection status |
+| `/api/products` | `GET` | List all community products (`?category=...`) |
+| `/api/products` | `POST` | Add a new community product |
+| `/api/programs` | `GET` | Four core pillars & initiatives (`?category=...`) |
+| `/api/team` | `GET` | Team members & Advisors (`?isAdvisor=true\|false`) |
+| `/api/news` | `GET` | Announcements & featured reports (`?type=...`) |
+| `/api/gallery` | `GET` | List all 6 photo albums |
+| `/api/gallery/:albumId` | `GET` | Album metadata and full image list |
+| `/api/contact` | `POST` | Submit general contact message or product order inquiry |
+| `/api/contact` | `GET` | Retrieve logged inquiries (for management portal) |
+| `/api/stats` | `GET` | Aggregated metrics, impact numbers, and counts |
+
+---
+
+## 🌟 Key Features
+
+1. **Pixel-Perfect Aesthetic Preservation**:
+   - Retains all exact fonts (`Merriweather`, `Open Sans`), Himalayan earth-toned color palettes (`#1c865c`, `#f2994a`), badges, and micro-interactions.
+2. **Interactive Modals**:
+   - **Team & Advisor Profile Modal**: Click on Dr. Nand Kishore Hatwal, Dr. Deepika Dimri, Shri Chandi Prasad Bhatt, etc., to read their complete biography.
+   - **Order & Product Enquiry Modal**: Submit order inquiries with automated WhatsApp pre-filled messaging.
+   - **Full-Screen Image Lightbox**: Accessible modal with Next/Previous navigation and keyboard controls.
+3. **Dedicated Admin & Management Portal**:
+   - Available at `/admin` to monitor server status, review inquiries, and publish new products.
+4. **Zero Broken Assets**:
+   - Built-in streaming middleware in Vite and Express serving `/Images` and `/PDFs` with zero file duplication.
+
+---
+
+## 👥 Credits
+- **Organization**: Himalayan Women Awareness & Livelihood Society (UK06008122023012444)
+- **Technical Development**: Saurav Singh Negi & Aakash Singh Mahori
