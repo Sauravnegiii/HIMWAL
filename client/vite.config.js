@@ -70,12 +70,7 @@ const copyAssetsPlugin = () => ({
       fs.copyFileSync(rootLogo, distLogo);
     }
 
-    // 4. Create 404.html for GitHub Pages SPA fallback
-    const distIndex = path.resolve(distDir, 'index.html');
-    const dist404 = path.resolve(distDir, '404.html');
-    if (fs.existsSync(distIndex)) {
-      fs.copyFileSync(distIndex, dist404);
-    }
+    // public/404.html handles SPA redirects on GitHub Pages
   }
 });
 
