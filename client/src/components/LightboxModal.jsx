@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 const LightboxModal = ({ isOpen, currentIndex, total, imageSrc, onPrev, onNext, onClose }) => {
   useEffect(() => {
@@ -44,7 +45,7 @@ const LightboxModal = ({ isOpen, currentIndex, total, imageSrc, onPrev, onNext, 
       <div style={{ textAlign: 'center', maxWidth: '90%', maxHeight: '90%' }}>
         <img
           id="lightbox-image"
-          src={imageSrc}
+          src={getAssetUrl(imageSrc)}
           alt={`Photo view ${currentIndex}`}
           style={{ maxWidth: '100%', maxHeight: '82vh', objectFit: 'contain', borderRadius: '8px' }}
         />

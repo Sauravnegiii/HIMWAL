@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import TeamModal from '../components/TeamModal';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { teamData as fallbackTeam } from '../data/seedData';
 
 const AboutPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -13,16 +16,23 @@ const AboutPage = () => {
     const fetchTeam = async () => {
       try {
         const [teamRes, advRes] = await Promise.all([
-          fetch('/api/team?isAdvisor=false'),
-          fetch('/api/team?isAdvisor=true')
+          apiFetch('/api/team?isAdvisor=false'),
+          apiFetch('/api/team?isAdvisor=true')
         ]);
-        const teamData = await teamRes.json();
-        const advData = await advRes.json();
-
-        if (teamData.success) setTeamMembers(teamData.data);
-        if (advData.success) setAdvisors(advData.data);
+        if (teamRes.ok && advRes.ok) {
+          const teamData = await teamRes.json();
+          const advData = await advRes.json();
+          if (teamData.success && advData.success) {
+            setTeamMembers(teamData.data);
+            setAdvisors(advData.data);
+            return;
+          }
+        }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load team data:', err);
+        // Fallback to static seed data
+        setTeamMembers(fallbackTeam.filter(m => !m.isAdvisor));
+        setAdvisors(fallbackTeam.filter(m => m.isAdvisor));
       } finally {
         setLoading(false);
       }
@@ -107,11 +117,11 @@ const AboutPage = () => {
               }}
             >
               <img
-                src="/Images/millet/023.webp"
+                src={getAssetUrl('/Images/millet/023.webp')}
                 alt="Uttarakhand Himalayan Landscape"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
                 onError={(e) => {
-                  e.target.src = '/LOGO.jpeg';
+                  e.target.src = getAssetUrl('/LOGO.jpeg');
                 }}
               />
             </div>
@@ -183,11 +193,11 @@ const AboutPage = () => {
               >
                 <div className="program-image" style={{ height: '280px' }}>
                   <img
-                    src={member.image}
+                    src={getAssetUrl(member.image)}
                     alt={member.name}
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src = '/LOGO.jpeg';
+                      e.target.src = getAssetUrl('/LOGO.jpeg');
                     }}
                   />
                 </div>
@@ -238,11 +248,11 @@ const AboutPage = () => {
               >
                 <div className="program-image" style={{ height: '280px' }}>
                   <img
-                    src={advisor.image}
+                    src={getAssetUrl(advisor.image)}
                     alt={advisor.name}
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src = '/LOGO.jpeg';
+                      e.target.src = getAssetUrl('/LOGO.jpeg');
                     }}
                   />
                 </div>

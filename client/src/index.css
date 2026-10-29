@@ -282,7 +282,7 @@ button.btn { cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('coverpage.jpeg') center/cover no-repeat;
+  background: linear-gradient(135deg, rgba(152, 177, 170, 0.88), rgba(19, 68, 56, 0.92));
   margin-top: 84px;
 }
 
@@ -1101,7 +1101,7 @@ textarea.modal-input { resize: vertical; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('Images/theme.webp') center/cover no-repeat;
+  background: url('/Images/theme.webp') center/cover no-repeat;
   margin-top: 84px;
   overflow: hidden;
 }

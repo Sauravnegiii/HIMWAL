@@ -40,8 +40,50 @@ const serveRootAssetsPlugin = () => ({
   }
 });
 
+// Plugin to copy Images, PDFs, and LOGO to dist directory on build and set up 404.html for GitHub Pages
+const copyAssetsPlugin = () => ({
+  name: 'copy-assets',
+  closeBundle() {
+    const distDir = path.resolve(__dirname, 'dist');
+    if (!fs.existsSync(distDir)) return;
+
+    // 1. Copy Images
+    const distImages = path.resolve(distDir, 'Images');
+    const rootImages = path.resolve(__dirname, '../Images');
+    if (fs.existsSync(rootImages) && !fs.existsSync(distImages)) {
+      console.log('Copying Images to dist...');
+      fs.cpSync(rootImages, distImages, { recursive: true });
+    }
+
+    // 2. Copy PDFs
+    const distPdfs = path.resolve(distDir, 'PDFs');
+    const rootPdfs = path.resolve(__dirname, '../PDFs');
+    if (fs.existsSync(rootPdfs) && !fs.existsSync(distPdfs)) {
+      console.log('Copying PDFs to dist...');
+      fs.cpSync(rootPdfs, distPdfs, { recursive: true });
+    }
+
+    // 3. Copy LOGO.jpeg
+    const distLogo = path.resolve(distDir, 'LOGO.jpeg');
+    const rootLogo = path.resolve(__dirname, '../LOGO.jpeg');
+    if (fs.existsSync(rootLogo) && !fs.existsSync(distLogo)) {
+      fs.copyFileSync(rootLogo, distLogo);
+    }
+
+    // 4. Create 404.html for GitHub Pages SPA fallback
+    const distIndex = path.resolve(distDir, 'index.html');
+    const dist404 = path.resolve(distDir, '404.html');
+    if (fs.existsSync(distIndex)) {
+      fs.copyFileSync(distIndex, dist404);
+    }
+  }
+});
+
+const base = process.env.GITHUB_PAGES === 'true' ? '/Himwal/' : (process.env.VITE_BASE_PATH || '/');
+
 export default defineConfig({
-  plugins: [react(), serveRootAssetsPlugin()],
+  base,
+  plugins: [react(), serveRootAssetsPlugin(), copyAssetsPlugin()],
   server: {
     port: 5173,
     proxy: {

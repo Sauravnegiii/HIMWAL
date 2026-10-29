@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <img src="/LOGO.jpeg" alt="HIMWAL Logo" className="footer-logo" />
+          <img src={getAssetUrl('/LOGO.jpeg')} alt="HIMWAL Logo" className="footer-logo" />
           <div>
             <strong>HIMWAL Society</strong>
             <p>Himalayan Women Awareness &amp; Livelihood</p>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LightboxModal from '../components/LightboxModal';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { galleryAlbumsData as fallbackAlbums, generateAlbumImages } from '../data/seedData';
 
 const AlbumGalleryPage = () => {
   const { albumId } = useParams();
@@ -15,13 +18,24 @@ const AlbumGalleryPage = () => {
   useEffect(() => {
     const fetchAlbum = async () => {
       try {
-        const res = await fetch(`/api/gallery/${albumId}`);
-        const data = await res.json();
-        if (data.success) {
-          setAlbum(data.data);
+        const res = await apiFetch(`/api/gallery/${albumId}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setAlbum(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load album:', err);
+        // Fallback to static seed data
+        const fallback = fallbackAlbums.find(a => a.albumId === albumId);
+        if (fallback) {
+          setAlbum({
+            ...fallback,
+            images: generateAlbumImages(fallback)
+          });
+        }
       } finally {
         setLoading(false);
       }
@@ -72,9 +86,10 @@ const AlbumGalleryPage = () => {
     setLightboxIndex((prev) => (prev >= total ? 1 : prev + 1));
   };
 
-  const currentLightboxImg = album.images && album.images[lightboxIndex - 1]
+  const rawLightboxImg = album.images && album.images[lightboxIndex - 1]
     ? album.images[lightboxIndex - 1].src
     : `${album.folder}/${String(lightboxIndex).padStart(3, '0')}.${album.ext || 'webp'}`;
+  const currentLightboxImg = getAssetUrl(rawLightboxImg);
 
   return (
     <>
@@ -123,7 +138,7 @@ const AlbumGalleryPage = () => {
             {currentImages.map((img) => (
               <img
                 key={img.index}
-                src={img.src}
+                src={getAssetUrl(img.src)}
                 alt={img.alt}
                 loading="lazy"
                 onClick={() => openLightbox(img.index)}

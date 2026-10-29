@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { getAssetUrl } from '../utils/assets';
 
 const TeamModal = ({ member, isOpen, onClose }) => {
   useEffect(() => {
@@ -45,11 +46,11 @@ const TeamModal = ({ member, isOpen, onClose }) => {
         <div className="profile-modal-header">
           <div className="profile-modal-avatar-wrapper">
             <img
-              src={member.image}
+              src={getAssetUrl(member.image)}
               alt={member.name}
               className="profile-modal-img"
               onError={(e) => {
-                e.target.src = '/LOGO.jpeg';
+                e.target.src = getAssetUrl('/LOGO.jpeg');
               }}
             />
           </div>

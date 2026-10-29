@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { newsData as fallbackNews } from '../data/seedData';
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
@@ -8,13 +11,18 @@ const NewsPage = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch('/api/news?type=featured');
-        const data = await res.json();
-        if (data.success) {
-          setNews(data.data);
+        const res = await apiFetch('/api/news?type=featured');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setNews(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load news:', err);
+        // Fallback to static seed data
+        setNews(fallbackNews.filter(n => n.type === 'featured'));
       } finally {
         setLoading(false);
       }
@@ -82,11 +90,11 @@ const NewsPage = () => {
                     <figure className="news-card-image-wrapper" style={{ margin: 0, height: '220px', overflow: 'hidden' }}>
                       <img
                         className="news-card-image"
-                        src={item.image}
+                        src={getAssetUrl(item.image)}
                         alt={item.title}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         onError={(e) => {
-                          e.target.src = '/LOGO.jpeg';
+                          e.target.src = getAssetUrl('/LOGO.jpeg');
                         }}
                       />
                     </figure>
@@ -102,7 +110,7 @@ const NewsPage = () => {
                 {item.pdfLink && (
                   <div style={{ textAlign: 'center', padding: '0 24px 24px 24px' }}>
                     <a
-                      href={item.pdfLink}
+                      href={getAssetUrl(item.pdfLink)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-secondary"

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
 
 const AdminPortalPage = () => {
   // Authentication states
@@ -38,7 +40,7 @@ const AdminPortalPage = () => {
         return;
       }
       try {
-        const res = await fetch('/api/auth/verify', {
+        const res = await apiFetch('/api/auth/verify', {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -71,7 +73,7 @@ const AdminPortalPage = () => {
     setLoginSubmitting(true);
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await apiFetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginForm)
@@ -96,11 +98,11 @@ const AdminPortalPage = () => {
   const loadDashboardData = async (authToken) => {
     try {
       const [statsRes, msgRes, healthRes] = await Promise.all([
-        fetch('/api/stats'),
-        fetch('/api/contact', {
+        apiFetch('/api/stats'),
+        apiFetch('/api/contact', {
           headers: { Authorization: `Bearer ${authToken}` }
         }),
-        fetch('/api/health')
+        apiFetch('/api/health')
       ]);
 
       const statsData = await statsRes.json();
@@ -119,7 +121,7 @@ const AdminPortalPage = () => {
     e.preventDefault();
     setProductFeedback('');
     try {
-      const res = await fetch('/api/products', {
+      const res = await apiFetch('/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +186,7 @@ const AdminPortalPage = () => {
             >
               <div style={{ textAlign: 'center', marginBottom: '28px' }}>
                 <img
-                  src="/LOGO.jpeg"
+                  src={getAssetUrl('/LOGO.jpeg')}
                   alt="HIMWAL Logo"
                   style={{ width: '70px', height: '70px', borderRadius: '50%', margin: '0 auto 14px auto', objectFit: 'cover' }}
                 />

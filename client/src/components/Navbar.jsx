@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,7 +28,7 @@ const Navbar = () => {
     <header className="header" style={{ boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.1)' : 'none' }}>
       <div className="container header-inner">
         <Link to="/" className="logo">
-          <img src="/LOGO.jpeg" alt="HIMWAL Logo" />
+          <img src={getAssetUrl('/LOGO.jpeg')} alt="HIMWAL Logo" />
           <div className="logo-text">
             <span className="logo-title">HIMWAL</span>
             <span className="logo-tagline">Himalayan Women Awareness & Livelihood Society</span>

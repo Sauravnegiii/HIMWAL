@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import OrderInquiryModal from '../components/OrderInquiryModal';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { productsData as fallbackProducts } from '../data/seedData';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -11,13 +14,18 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch('/api/products');
-        const data = await res.json();
-        if (data.success) {
-          setProducts(data.data);
+        const res = await apiFetch('/api/products');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setProducts(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load products:', err);
+        // Fallback to static seed data
+        setProducts(fallbackProducts);
       } finally {
         setLoading(false);
       }
@@ -71,11 +79,11 @@ const ProductsPage = () => {
               <div key={product.name} className="product-card">
                 <div className="product-image">
                   <img
-                    src={product.image}
+                    src={getAssetUrl(product.image)}
                     alt={product.name}
                     loading="lazy"
                     onError={(e) => {
-                      e.target.src = '/LOGO.jpeg';
+                      e.target.src = getAssetUrl('/LOGO.jpeg');
                     }}
                   />
                 </div>
@@ -101,7 +109,7 @@ const ProductsPage = () => {
             <div className="catalog-card">
               <h3>Explore Our Complete Catalogue &amp; Rates</h3>
               <p>Download our full catalog PDF to view all individual item listings, units, and seasonal pricing.</p>
-              <a href="/PDFs/finalcatalogue.pdf" target="_blank" rel="noopener noreferrer">
+              <a href={getAssetUrl('/PDFs/finalcatalogue.pdf')} target="_blank" rel="noopener noreferrer">
                 <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>

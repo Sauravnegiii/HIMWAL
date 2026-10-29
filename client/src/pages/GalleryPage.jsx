@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { galleryAlbumsData as fallbackAlbums } from '../data/seedData';
 
 const GalleryPage = () => {
   const [albums, setAlbums] = useState([]);
@@ -8,13 +11,18 @@ const GalleryPage = () => {
   useEffect(() => {
     const fetchAlbums = async () => {
       try {
-        const res = await fetch('/api/gallery');
-        const data = await res.json();
-        if (data.success) {
-          setAlbums(data.data);
+        const res = await apiFetch('/api/gallery');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setAlbums(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load gallery albums:', err);
+        // Fallback to static seed data
+        setAlbums(fallbackAlbums);
       } finally {
         setLoading(false);
       }
@@ -58,12 +66,12 @@ const GalleryPage = () => {
               >
                 <div className="program-image" style={{ height: '240px', overflow: 'hidden' }}>
                   <img
-                    src={album.coverImage}
+                    src={getAssetUrl(album.coverImage)}
                     alt={album.title}
                     loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
-                      e.target.src = '/LOGO.jpeg';
+                      e.target.src = getAssetUrl('/LOGO.jpeg');
                     }}
                   />
                 </div>

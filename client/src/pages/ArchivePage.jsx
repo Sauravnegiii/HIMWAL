@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { newsData as fallbackNews } from '../data/seedData';
 
 const ArchivePage = () => {
   const [archiveItems, setArchiveItems] = useState([]);
@@ -8,13 +11,18 @@ const ArchivePage = () => {
   useEffect(() => {
     const fetchArchive = async () => {
       try {
-        const res = await fetch('/api/news');
-        const data = await res.json();
-        if (data.success) {
-          setArchiveItems(data.data);
+        const res = await apiFetch('/api/news');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setArchiveItems(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load archive:', err);
+        // Fallback to static seed data
+        setArchiveItems(fallbackNews);
       } finally {
         setLoading(false);
       }
@@ -82,7 +90,7 @@ const ArchivePage = () => {
 
                 {item.pdfLink && (
                   <a
-                    href={item.pdfLink}
+                    href={getAssetUrl(item.pdfLink)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="archive-link"

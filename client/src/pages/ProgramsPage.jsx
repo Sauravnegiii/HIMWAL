@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
+import { programsData as fallbackPrograms } from '../data/seedData';
 
 const ProgramsPage = () => {
   const [programs, setPrograms] = useState([]);
@@ -9,13 +12,21 @@ const ProgramsPage = () => {
   useEffect(() => {
     const fetchPrograms = async () => {
       try {
-        const res = await fetch(`/api/programs${activeFilter !== 'all' ? `?category=${activeFilter}` : ''}`);
-        const data = await res.json();
-        if (data.success) {
-          setPrograms(data.data);
+        const res = await apiFetch(`/api/programs${activeFilter !== 'all' ? `?category=${activeFilter}` : ''}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setPrograms(data.data);
+            return;
+          }
         }
+        throw new Error('API unavailable');
       } catch (err) {
-        console.error('Failed to load programs:', err);
+        // Fallback to static seed data
+        const filtered = activeFilter === 'all'
+          ? fallbackPrograms
+          : fallbackPrograms.filter(p => p.category === activeFilter);
+        setPrograms(filtered);
       } finally {
         setLoading(false);
       }
@@ -104,12 +115,12 @@ const ProgramsPage = () => {
                 >
                   <div style={{ flex: '1 1 400px', minHeight: '280px', maxHeight: '380px', position: 'relative' }}>
                     <img
-                      src={program.image}
+                      src={getAssetUrl(program.image)}
                       alt={program.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       loading="lazy"
                       onError={(e) => {
-                        e.target.src = '/LOGO.jpeg';
+                        e.target.src = getAssetUrl('/LOGO.jpeg');
                       }}
                     />
                   </div>

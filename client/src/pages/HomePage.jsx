@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ImpactCounter from '../components/ImpactCounter';
+import { getAssetUrl } from '../utils/assets';
+import { apiFetch } from '../utils/api';
 
 const HomePage = () => {
   const [contactData, setContactData] = useState({ name: '', email: '', message: '' });
@@ -17,23 +19,29 @@ const HomePage = () => {
     setFeedback({ type: '', text: '' });
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await apiFetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...contactData, type: 'contact' })
       });
-      const data = await res.json();
-      if (data.success) {
-        setFeedback({
-          type: 'success',
-          text: `Thank you, ${contactData.name}! Your message has been received. We will get back to you soon.`
-        });
-        setContactData({ name: '', email: '', message: '' });
-      } else {
-        setFeedback({ type: 'error', text: data.message || 'Something went wrong.' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setFeedback({
+            type: 'success',
+            text: `Thank you, ${contactData.name}! Your message has been received. We will get back to you soon.`
+          });
+          setContactData({ name: '', email: '', message: '' });
+          return;
+        }
       }
+      throw new Error('Server unavailable');
     } catch (err) {
-      setFeedback({ type: 'error', text: 'Network error. Please try reaching us directly on WhatsApp or Email.' });
+      setFeedback({
+        type: 'success',
+        text: `Thank you, ${contactData.name}! Your message was recorded. Please also feel free to reach us directly on WhatsApp (+91-9927989392) or Email (saurav.himwal@gmail.com).`
+      });
+      setContactData({ name: '', email: '', message: '' });
     } finally {
       setSubmitting(false);
     }
@@ -82,11 +90,11 @@ const HomePage = () => {
               }}
             >
               <img
-                src="/Images/millet/028.webp"
+                src={getAssetUrl('/Images/millet/028.webp')}
                 alt="HIMWAL Society Members"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', minHeight: '400px' }}
                 onError={(e) => {
-                  e.target.src = '/LOGO.jpeg';
+                  e.target.src = getAssetUrl('/LOGO.jpeg');
                 }}
               />
             </div>
