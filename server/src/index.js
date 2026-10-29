@@ -22,6 +22,7 @@ app.use('/PDFs', express.static(path.join(rootDir, 'PDFs')));
 app.get('/LOGO.jpeg', (req, res) => res.sendFile(path.join(rootDir, 'LOGO.jpeg')));
 
 // API Routes
+app.use('/api/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/programs', require('./routes/programs'));
 app.use('/api/team', require('./routes/team'));

@@ -42,8 +42,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST new product
-router.post('/', async (req, res) => {
+const authMiddleware = require('../middleware/auth');
+
+// POST new product (protected)
+router.post('/', authMiddleware, async (req, res) => {
   try {
     const { name, category, description, image, items, priceInfo, featured } = req.body;
     if (!name || !category || !description) {

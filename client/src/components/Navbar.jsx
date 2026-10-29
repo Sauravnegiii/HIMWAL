@@ -53,9 +53,6 @@ const Navbar = () => {
           <NavLink to="/news" className={({ isActive }) => (isActive ? 'active' : '')}>
             Latest
           </NavLink>
-          <NavLink to="/admin" className={({ isActive }) => (isActive ? 'active' : '')} style={{ opacity: 0.85 }}>
-            Portal
-          </NavLink>
         </nav>
 
         <div className="header-actions">

@@ -2,13 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const AdminPortalPage = () => {
+  // Authentication states
+  const [token, setToken] = useState(localStorage.getItem('himwal_admin_token') || '');
+  const [adminUser, setAdminUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // Login form states
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [loginError, setLoginError] = useState('');
+  const [loginSubmitting, setLoginSubmitting] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Dashboard states
   const [stats, setStats] = useState(null);
   const [messages, setMessages] = useState([]);
   const [health, setHealth] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('inquiries'); // 'inquiries' | 'addProduct'
+  const [activeTab, setActiveTab] = useState('inquiries');
 
-  // New product form
+  // Add product form
   const [newProduct, setNewProduct] = useState({
     name: '',
     category: 'pickles',
@@ -19,13 +30,79 @@ const AdminPortalPage = () => {
   });
   const [productFeedback, setProductFeedback] = useState('');
 
-  const loadData = async () => {
+  // 1. Verify token on mount
+  useEffect(() => {
+    const verifyToken = async () => {
+      if (!token) {
+        setAuthLoading(false);
+        return;
+      }
+      try {
+        const res = await fetch('/api/auth/verify', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (data.success) {
+          setAdminUser(data.admin);
+          loadDashboardData(token);
+        } else {
+          // Token expired or invalid
+          handleLogout();
+        }
+      } catch (err) {
+        handleLogout();
+      } finally {
+        setAuthLoading(false);
+      }
+    };
+    verifyToken();
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('himwal_admin_token');
+    setToken('');
+    setAdminUser(null);
+    setMessages([]);
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    setLoginError('');
+    setLoginSubmitting(true);
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginForm)
+      });
+      const data = await res.json();
+      if (data.success && data.token) {
+        localStorage.setItem('himwal_admin_token', data.token);
+        setToken(data.token);
+        setAdminUser(data.admin);
+        setLoginForm({ username: '', password: '' });
+        loadDashboardData(data.token);
+      } else {
+        setLoginError(data.message || 'Invalid username or password.');
+      }
+    } catch (err) {
+      setLoginError('Unable to connect to authentication server. Please ensure the backend is running.');
+    } finally {
+      setLoginSubmitting(false);
+    }
+  };
+
+  const loadDashboardData = async (authToken) => {
     try {
       const [statsRes, msgRes, healthRes] = await Promise.all([
         fetch('/api/stats'),
-        fetch('/api/contact'),
+        fetch('/api/contact', {
+          headers: { Authorization: `Bearer ${authToken}` }
+        }),
         fetch('/api/health')
       ]);
+
       const statsData = await statsRes.json();
       const msgData = await msgRes.json();
       const healthData = await healthRes.json();
@@ -35,14 +112,8 @@ const AdminPortalPage = () => {
       setHealth(healthData);
     } catch (err) {
       console.error('Failed to load admin data:', err);
-    } finally {
-      setLoading(false);
     }
   };
-
-  useEffect(() => {
-    loadData();
-  }, []);
 
   const handleProductSubmit = async (e) => {
     e.preventDefault();
@@ -50,12 +121,15 @@ const AdminPortalPage = () => {
     try {
       const res = await fetch('/api/products', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
         body: JSON.stringify(newProduct)
       });
       const data = await res.json();
       if (data.success) {
-        setProductFeedback('✅ Product successfully added!');
+        setProductFeedback('✅ Product successfully added to catalog!');
         setNewProduct({
           name: '',
           category: 'pickles',
@@ -64,7 +138,7 @@ const AdminPortalPage = () => {
           priceInfo: 'Handcrafted Pahadi organic product',
           featured: false
         });
-        loadData();
+        loadDashboardData(token);
       } else {
         setProductFeedback(`❌ ${data.message || 'Error creating product'}`);
       }
@@ -73,22 +147,169 @@ const AdminPortalPage = () => {
     }
   };
 
+  if (authLoading) {
+    return (
+      <div className="section" style={{ textAlign: 'center', padding: '120px 20px' }}>
+        <h3>Verifying Administrator Credentials...</h3>
+      </div>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // RENDER LOGIN SCREEN (IF NOT AUTHENTICATED)
+  // -------------------------------------------------------------
+  if (!adminUser) {
+    return (
+      <>
+        <div className="page-hero">
+          <div className="page-hero-overlay"></div>
+          <div className="page-hero-content">
+            <span className="hero-badge">Staff &amp; Executive Access</span>
+            <h1>Administrator Login</h1>
+            <p>Authorized access for HIMWAL Society coordination and management.</p>
+          </div>
+        </div>
+
+        <section className="section" style={{ minHeight: '60vh', display: 'flex', alignItems: 'center' }}>
+          <div className="container" style={{ maxWidth: '480px' }}>
+            <div
+              style={{
+                background: 'white',
+                padding: '40px 36px',
+                borderRadius: 'var(--radius-lg)',
+                boxShadow: 'var(--shadow-md)',
+                border: '1px solid var(--color-border)',
+                borderTop: '5px solid var(--color-primary)'
+              }}
+            >
+              <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+                <img
+                  src="/LOGO.jpeg"
+                  alt="HIMWAL Logo"
+                  style={{ width: '70px', height: '70px', borderRadius: '50%', margin: '0 auto 14px auto', objectFit: 'cover' }}
+                />
+                <h3 style={{ margin: 0, fontSize: '1.4rem', color: 'var(--color-text)' }}>Admin Portal</h3>
+                <p style={{ margin: '6px 0 0 0', fontSize: '0.88rem', color: 'var(--color-text-light)' }}>
+                  Enter your credentials to manage inquiries and catalog
+                </p>
+              </div>
+
+              {loginError && (
+                <div
+                  style={{
+                    padding: '12px 14px',
+                    borderRadius: '8px',
+                    marginBottom: '20px',
+                    background: '#fee2e2',
+                    border: '1px solid #fca5a5',
+                    color: '#991b1b',
+                    fontSize: '0.9rem'
+                  }}
+                >
+                  {loginError}
+                </div>
+              )}
+
+              <form onSubmit={handleLoginSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '6px' }}>
+                    Username
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Enter admin username"
+                    className="modal-input"
+                    value={loginForm.username}
+                    onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.9rem', fontWeight: 600, marginBottom: '6px' }}>
+                    Password
+                  </label>
+                  <div style={{ position: 'relative' }}>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      required
+                      placeholder="Enter administrator password"
+                      className="modal-input"
+                      style={{ paddingRight: '45px' }}
+                      value={loginForm.password}
+                      onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: 'absolute',
+                        right: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: '0.85rem',
+                        color: 'var(--color-text-light)'
+                      }}
+                      tabIndex={-1}
+                    >
+                      {showPassword ? 'Hide' : 'Show'}
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  style={{ marginTop: '8px', padding: '12px' }}
+                  disabled={loginSubmitting}
+                >
+                  {loginSubmitting ? 'Authenticating...' : 'Sign In to Portal'}
+                </button>
+              </form>
+
+              <div style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.82rem', color: 'var(--color-text-light)' }}>
+                Protected system &bull; HIMWAL Society Dehradun
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
+  // -------------------------------------------------------------
+  // RENDER AUTHENTICATED DASHBOARD
+  // -------------------------------------------------------------
   return (
     <>
       <div className="page-hero">
         <div className="page-hero-overlay"></div>
         <div className="page-hero-content">
-          <span className="hero-badge">MERN Control Center</span>
+          <span className="hero-badge" style={{ background: '#1c865c', color: 'white' }}>
+            Authenticated Session &bull; {adminUser.username}
+          </span>
           <h1>HIMWAL Portal &amp; Management</h1>
           <p>Real-time server monitoring, inquiry logs, and community database management.</p>
         </div>
       </div>
 
       <div className="breadcrumb">
-        <div className="container breadcrumb-inner">
-          <Link to="/">Home</Link>
-          <span className="breadcrumb-sep">›</span>
-          <span>Portal</span>
+        <div className="container breadcrumb-inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-sep">›</span>
+            <span>Admin Portal</span>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="btn btn-outline btn-sm"
+            style={{ borderColor: '#ef4444', color: '#ef4444' }}
+          >
+            Logout ({adminUser.username})
+          </button>
         </div>
       </div>
 
@@ -190,7 +411,7 @@ const AdminPortalPage = () => {
               onClick={() => setActiveTab('inquiries')}
               className={`btn ${activeTab === 'inquiries' ? 'btn-primary' : 'btn-outline'}`}
             >
-              Inquiries &amp; Messages ({messages.length})
+              Inquiries &amp; Orders ({messages.length})
             </button>
             <button
               onClick={() => setActiveTab('addProduct')}
@@ -205,7 +426,7 @@ const AdminPortalPage = () => {
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <h3 style={{ margin: 0 }}>Recent Contact &amp; Product Inquiries</h3>
-                <button onClick={loadData} className="btn btn-outline btn-sm">
+                <button onClick={() => loadDashboardData(token)} className="btn btn-outline btn-sm">
                   Refresh
                 </button>
               </div>
@@ -272,7 +493,7 @@ const AdminPortalPage = () => {
             <div style={{ background: 'white', padding: '32px', borderRadius: 'var(--radius-md)', border: '1px solid var(--color-border)', maxWidth: '700px' }}>
               <h3 style={{ marginBottom: '8px' }}>Add New Product via REST API</h3>
               <p style={{ color: 'var(--color-text-light)', marginBottom: '24px' }}>
-                Posts directly to <code>/api/products</code>. When MongoDB is running, it inserts into the collection.
+                Posts directly to <code>/api/products</code> with your administrator bearer token.
               </p>
 
               {productFeedback && (

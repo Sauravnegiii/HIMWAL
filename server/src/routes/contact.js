@@ -47,8 +47,10 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET all messages (for admin dashboard)
-router.get('/', async (req, res) => {
+const authMiddleware = require('../middleware/auth');
+
+// GET all messages (for admin dashboard, protected)
+router.get('/', authMiddleware, async (req, res) => {
   try {
     if (getDBStatus().connected) {
       const messages = await ContactMessage.find({}).sort({ createdAt: -1 });

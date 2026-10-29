@@ -77,6 +77,10 @@ const Footer = () => {
             >
               Aakash Singh Mahori
             </a>
+            <span style={{ margin: '0 8px', opacity: 0.4 }}>•</span>
+            <Link to="/admin" style={{ opacity: 0.5, fontSize: '0.78rem', textDecoration: 'none' }} title="Administrator Portal Login">
+              🔒 Admin
+            </Link>
           </p>
         </div>
       </div>
