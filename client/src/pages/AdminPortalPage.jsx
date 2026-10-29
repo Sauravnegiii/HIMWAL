@@ -406,16 +406,16 @@ const AdminPortalPage = () => {
           </div>
 
           {/* Tab Navigation */}
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', borderBottom: '1px solid var(--color-border)', paddingBottom: '12px' }}>
+          <div style={{ display: 'flex', gap: '14px', marginBottom: '24px', borderBottom: '1px solid var(--color-border)', paddingBottom: '14px', flexWrap: 'wrap' }}>
             <button
               onClick={() => setActiveTab('inquiries')}
-              className={`btn ${activeTab === 'inquiries' ? 'btn-primary' : 'btn-outline'}`}
+              className={`admin-tab-btn ${activeTab === 'inquiries' ? 'active' : ''}`}
             >
               Inquiries &amp; Orders ({messages.length})
             </button>
             <button
               onClick={() => setActiveTab('addProduct')}
-              className={`btn ${activeTab === 'addProduct' ? 'btn-primary' : 'btn-outline'}`}
+              className={`admin-tab-btn ${activeTab === 'addProduct' ? 'active' : ''}`}
             >
               Add Community Product (API)
             </button>
@@ -424,9 +424,14 @@ const AdminPortalPage = () => {
           {/* Inquiries Tab */}
           {activeTab === 'inquiries' && (
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
                 <h3 style={{ margin: 0 }}>Recent Contact &amp; Product Inquiries</h3>
-                <button onClick={() => loadDashboardData(token)} className="btn btn-outline btn-sm">
+                <button onClick={() => loadDashboardData(token)} className="admin-action-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                  </svg>
                   Refresh
                 </button>
               </div>
